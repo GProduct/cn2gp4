@@ -8,7 +8,7 @@
 @media (prefers-color-scheme: light) {
 
     .question-text {
-        color: white;
+        color: var(--md-sys-color-primary);
         font-size: x-large;
         margin: 0px;
     }
@@ -55,10 +55,9 @@
         min-height: 100vh;
         align-items: center;
         flex-direction: column;
-        background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
         background-size: cover;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(30px);
+        backdrop-filter: blur(30px);
         margin: 0px;
     }
 
@@ -323,7 +322,7 @@
 @media (prefers-color-scheme: dark) {
 
     .question-text {
-        color: white;
+        color: var(--md-sys-color-primary);
         font-size: x-large;
         margin: 0px;
     }
@@ -370,10 +369,9 @@
         min-height: 100vh;
         align-items: center;
         flex-direction: column;
-        background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
         background-size: cover;
-        -webkit-backdrop-filter: blur(25px) brightness(0.5);
-        backdrop-filter: blur(25px) brightness(0.5);
+        -webkit-backdrop-filter: blur(30px) brightness(0.5);
+        backdrop-filter: blur(30px) brightness(0.5);
         margin: 0px;
     }
 

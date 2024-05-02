@@ -813,7 +813,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
     if (e.matches) {
         bottomLogo.src = 'src/styles/icon/logo_cours_transversal_blanc_rvb.png';
     } else {
-        bottomLogo.src = 'src/styles/icon/logo_cours_transversal_noir_rvb.png';
+        bottomLogo.src = 'src/styles/icon/logo_cours_transversal_blanc_rvb.png';
     }
 });
 
@@ -828,11 +828,15 @@ let bgImgUrl = [
     },
     {
         img: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_1280.jpg",
-        theme: "orange-theme",
+        theme: "red-theme",
     },
     {
         img: "https://cdn.pixabay.com/photo/2023/01/08/09/34/jellyfish-7704801_1280.jpg",
         theme: "blue-theme",
+    },
+    {
+        img: "https://cdn.pixabay.com/photo/2016/09/21/04/46/barley-field-1684052_1280.jpg",
+        theme: "green-theme",
     }
 ]
 
