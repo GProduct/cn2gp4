@@ -1,0 +1,636 @@
+@import url(tokens.css); /*Couleurs du theme*/
+@import url(colors.module.css);
+@import url(typography.module.css);
+@import url(theme.light.css) (prefers-color-scheme: light);
+@import url(theme.dark.css) (prefers-color-scheme: dark);
+
+/* Styles pour le thème clair */
+@media (prefers-color-scheme: light) {
+
+    .question-text {
+        color: white;
+        font-size: x-large;
+        margin: 0px;
+    }
+
+    .progress-bar-bg{
+        width: 100%;
+        height: 0px;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-secondary-container);
+        transition: 0.25s;
+        transition: height 0.25s;
+    }
+
+    .progress-bar-fg{
+        width: 0%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-on-secondary-container);
+        transition: 0.25s;
+        object-fit: contain;
+    }
+
+    .progress-bar-bg-a{
+        width: 100%;
+        height: 0px;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-tertiary-container);
+        transition: 0.25s;
+        transition: height 0.25s;
+    }
+
+    .progress-bar-fg-a{
+        width: 0%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-on-tertiary-container);
+        transition: 0.25s;
+        object-fit: contain;
+    }
+
+    body {
+        background-color: var(--md-sys-color-surface);
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        flex-direction: column;
+        background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
+        background-size: cover;
+        webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        margin: 0px;
+    }
+
+    *{
+        font-family: "roboto";
+        font-weight: bold;
+    }
+
+    footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+    }
+
+    footer img{
+        max-width: 200px;
+        height: auto;
+    }
+
+    .question-display-box {
+        margin: auto;
+        max-width: fit-content;
+        max-width: -moz-fit-content;
+        moz-fit-content: fit-content;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+    }
+
+    .question-global {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .question-global .column {
+        background-color: var(--md-sys-color-surface-variant);
+        color : var(--md-sys-color-on-surface-variant);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 25px;
+        padding: 25px;
+    }
+
+    .results-global {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .results-global .column {
+        background-color: var(--md-sys-color-surface-variant);
+        color : var(--md-sys-color-on-surface-variant);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 25px;
+        padding: 25px;
+    }
+
+    .buttons-container-row {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    button {
+        background-color: var(--md-sys-color-tertiary-container);
+        color: var(--md-sys-color-on-tertiary-container);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        border: none;
+        border-radius: 50px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    button:hover {
+        background-color: var(--md-sys-color-on-tertiary-container);
+        color: var(--md-sys-color-tertiary-container);
+        transition: 0.5s;
+    }
+
+    input[type="number"] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+    }
+
+    .number-input {
+        background-color: var(--md-sys-color-surface);
+        border-color: var(--md-sys-color-outline);
+        border-radius: 10px;
+        padding: 10px;
+        border-width: 0px;
+        color: var(--md-sys-color-on-surface);
+    }
+
+    .number-input-b {
+        background-color: var(--md-sys-color-surface);
+        border-color: var(--md-sys-color-outline);
+        padding: 5px;
+        border-width: 0px;
+        color: var(--md-sys-color-on-surface);
+        width: 50px;
+    }
+
+    .nav-btn-left{
+        background-color: var(--md-sys-color-tertiary-container);
+        color: var(--md-sys-color-on-tertiary-container);
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+        transition: 0.5s;
+    }
+
+    .nav-btn-left:hover {
+        background-color: var(--md-sys-color-on-tertiary-container);
+        color: var(--md-sys-color-tertiary-container);
+        transition: 0.5s;
+        padding-right: 25px;
+    }
+
+    .nav-btn-right{
+        background-color: var(--md-sys-color-tertiary-container);
+        color: var(--md-sys-color-on-tertiary-container);
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+        transition: 0.5s;
+    }
+
+    .nav-btn-right:hover {
+        background-color: var(--md-sys-color-on-tertiary-container);
+        color: var(--md-sys-color-tertiary-container);
+        transition: 0.5s;
+        padding-left: 25px;
+    }
+
+    .option-btn{
+        background-color: var(--md-sys-color-secondary);
+        color: var(--md-sys-color-on-secondary);
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .option-btn:hover {
+        background-color: var(--md-sys-color-on-secondary);
+        color: var(--md-sys-color-secondary);
+        transition: 0.5s;
+    }
+
+    .checkbox-container-column {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .checkbox-container-row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .checkbox-container-row-b {
+        gap: 5px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: left;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        background-color: var(--md-sys-color-secondary);
+        margin: 0;
+        font: inherit;
+        color: var(--md-sys-color-on-secondary);
+        width: 1.15em;
+        height: 1.15em;
+        border: none;
+        border-radius: 0.35em;
+        transform: translateY(-0.075em);
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: var(--md-sys-color-on-secondary);
+        color: var(--md-sys-color-secondary);
+        border: 0.1em solid var(--md-sys-color-secondary);
+    }
+
+    .add-remove-container-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .add-btn {
+        background-color: var(--md-sys-color-tertiary);
+        color: var(--md-sys-color-on-tertiary);
+        border: none;
+        border-radius: 0px 10px 10px 0px;
+        padding: 5px;
+        transition: 0.15s;
+    }
+
+    .add-btn:hover {
+        background-color: var(--md-sys-color-on-tertiary);
+        color: var(--md-sys-color-tertiary);
+        transition: 0.15s;
+    }
+
+    .remove-btn {
+        background-color: var(--md-sys-color-error);
+        color: var(--md-sys-color-on-error);
+        border: none;
+        border-radius: 10px 0px 0px 10px;
+        padding: 5px;
+        transition: 0.15s;
+    }
+
+    .remove-btn:hover {
+        background-color: var(--md-sys-color-on-error);
+        color: var(--md-sys-color-error);
+        transition: 0.15s;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+      }
+}
+    
+@media (prefers-color-scheme: dark) {
+
+    .question-text {
+        color: white;
+        font-size: x-large;
+        margin: 0px;
+    }
+
+    .progress-bar-bg{
+        width: 100%;
+        height: 0px;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-secondary-container);
+        transition: 0.25s;
+        transition: height 0.25s;
+    }
+
+    .progress-bar-fg{
+        width: 0%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-on-secondary-container);
+        transition: 0.25s;
+        object-fit: contain;
+    }
+
+    .progress-bar-bg-a{
+        width: 100%;
+        height: 0px;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-tertiary-container);
+        transition: 0.25s;
+        transition: height 0.25s;
+    }
+
+    .progress-bar-fg-a{
+        width: 0%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: var(--md-sys-color-on-tertiary-container);
+        transition: 0.25s;
+        object-fit: contain;
+    }
+
+    body {
+        background-color: var(--md-sys-color-surface);
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        flex-direction: column;
+        background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
+        background-size: cover;
+        webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        margin: 0px;
+    }
+
+    *{
+        font-family: "roboto";
+        font-weight: bold;
+    }
+
+    footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+    }
+
+    footer img{
+        max-width: 200px;
+        height: auto;
+    }
+
+    .question-display-box {
+        margin: auto;
+        max-width: fit-content;
+        max-width: -moz-fit-content;
+        moz-fit-content: fit-content;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+    }
+
+    .question-global {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .question-global .column {
+        background-color: var(--md-sys-color-surface-variant);
+        color : var(--md-sys-color-on-surface-variant);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 25px;
+        padding: 25px;
+    }
+
+    .results-global {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .results-global .column {
+        background-color: var(--md-sys-color-surface-variant);
+        color : var(--md-sys-color-on-surface-variant);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 25px;
+        padding: 25px;
+    }
+
+    .buttons-container-row {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    button {
+        background-color: var(--md-sys-color-tertiary-container);
+        color: var(--md-sys-color-on-tertiary-container);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        border: none;
+        border-radius: 50px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    button:hover {
+        background-color: var(--md-sys-color-on-tertiary-container);
+        color: var(--md-sys-color-tertiary-container);
+        transition: 0.5s;
+    }
+
+    input[type="number"] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+    }
+
+    .number-input {
+        background-color: var(--md-sys-color-surface);
+        border-color: var(--md-sys-color-outline);
+        border-radius: 10px;
+        padding: 10px;
+        border-width: 0px;
+        color: var(--md-sys-color-on-surface);
+    }
+
+    .number-input-b {
+        background-color: var(--md-sys-color-surface);
+        border-color: var(--md-sys-color-outline);
+        padding: 5px;
+        border-width: 0px;
+        color: var(--md-sys-color-on-surface);
+        width: 50px;
+    }
+
+    .nav-btn-left{
+        background-color: var(--md-sys-color-tertiary-container);
+        color: var(--md-sys-color-on-tertiary-container);
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+        transition: 0.5s;
+    }
+
+    .nav-btn-left:hover {
+        background-color: var(--md-sys-color-on-tertiary-container);
+        color: var(--md-sys-color-tertiary-container);
+        transition: 0.5s;
+        padding-right: 25px;
+    }
+
+    .nav-btn-right{
+        background-color: var(--md-sys-color-tertiary-container);
+        color: var(--md-sys-color-on-tertiary-container);
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+        transition: 0.5s;
+    }
+
+    .nav-btn-right:hover {
+        background-color: var(--md-sys-color-on-tertiary-container);
+        color: var(--md-sys-color-tertiary-container);
+        transition: 0.5s;
+        padding-left: 25px;
+    }
+
+    .option-btn{
+        background-color: var(--md-sys-color-secondary);
+        color: var(--md-sys-color-on-secondary);
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .option-btn:hover {
+        background-color: var(--md-sys-color-on-secondary);
+        color: var(--md-sys-color-secondary);
+        transition: 0.5s;
+    }
+
+    .checkbox-container-column {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .checkbox-container-row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .checkbox-container-row-b {
+        gap: 5px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: left;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        background-color: var(--md-sys-color-secondary);
+        margin: 0;
+        font: inherit;
+        color: var(--md-sys-color-on-secondary);
+        width: 1.15em;
+        height: 1.15em;
+        border: none;
+        border-radius: 0.35em;
+        transform: translateY(-0.075em);
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: var(--md-sys-color-on-secondary);
+        color: var(--md-sys-color-secondary);
+        border: 0.1em solid var(--md-sys-color-secondary);
+    }
+
+    .add-remove-container-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .add-btn {
+        background-color: var(--md-sys-color-tertiary);
+        color: var(--md-sys-color-on-tertiary);
+        border: none;
+        border-radius: 0px 10px 10px 0px;
+        padding: 5px;
+        transition: 0.15s;
+    }
+
+    .add-btn:hover {
+        background-color: var(--md-sys-color-on-tertiary);
+        color: var(--md-sys-color-tertiary);
+        transition: 0.15s;
+    }
+
+    .remove-btn {
+        background-color: var(--md-sys-color-error);
+        color: var(--md-sys-color-on-error);
+        border: none;
+        border-radius: 10px 0px 0px 10px;
+        padding: 5px;
+        transition: 0.15s;
+    }
+
+    .remove-btn:hover {
+        background-color: var(--md-sys-color-on-error);
+        color: var(--md-sys-color-error);
+        transition: 0.15s;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+      }
+}
