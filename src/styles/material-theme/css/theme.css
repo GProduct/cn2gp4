@@ -57,7 +57,7 @@
         flex-direction: column;
         background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
         background-size: cover;
-        webkit-backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         margin: 0px;
     }
@@ -85,13 +85,12 @@
 
     .question-display-box {
         margin: auto;
-        max-width: fit-content;
         max-width: -moz-fit-content;
-        moz-fit-content: fit-content;
+        max-width: fit-content;
+        -moz-fit-content: fit-content;
         justify-content: center;
         display: flex;
         flex-direction: column;
-        backdrop-filter: blur(10px);
         padding: 10px;
     }
 
@@ -365,6 +364,11 @@
         object-fit: contain;
     }
 
+    html {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+
     body {
         background-color: var(--md-sys-color-surface);
         display: flex;
@@ -373,8 +377,8 @@
         flex-direction: column;
         background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
         background-size: cover;
-        webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(25px) brightness(0.5);
+        backdrop-filter: blur(25px) brightness(0.5);
         margin: 0px;
     }
 
@@ -401,13 +405,12 @@
 
     .question-display-box {
         margin: auto;
-        max-width: fit-content;
         max-width: -moz-fit-content;
-        moz-fit-content: fit-content;
+        max-width: fit-content;
+        -moz-fit-content: fit-content;
         justify-content: center;
         display: flex;
         flex-direction: column;
-        backdrop-filter: blur(10px);
         padding: 10px;
     }
 

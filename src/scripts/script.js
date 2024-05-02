@@ -704,6 +704,7 @@ function displayStats(resultsGlobal, total1, total2) {
                     return;
                 } else {
                     value = question.answer;
+                    if(value > 100) value = 100;
                     let resultText = document.createElement('p');
                     resultText.innerHTML = question.category + " : " + ((value * 100)/total1).toFixed(2) + "%";
                     statsArea.appendChild(resultText);
@@ -729,6 +730,7 @@ function displayStats(resultsGlobal, total1, total2) {
                         return;
                     } else {
                         value = answer;
+                        if(value > 100) value = 100;
                         let resultText = document.createElement('p');
                         resultText.innerHTML = question.options[i] + " : " + ((value * 100)/total2).toFixed(2) + "%";
                         statsArea1.appendChild(resultText);
