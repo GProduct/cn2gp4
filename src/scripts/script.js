@@ -802,18 +802,25 @@ function displayProgressBar(statsArea, percent) {
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     const bottomLogo = document.getElementById('bottomLogo');
+    let btn = document.getElementById('toggleThemeBtn');
+    btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
     bottomLogo.src = `src/styles/icon/logo_cours_transversal_blanc_rvb.png`;
 } else {
     const bottomLogo = document.getElementById('bottomLogo');
+    let btn = document.getElementById('toggleThemeBtn');
+    btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
     bottomLogo.src = `src/styles/icon/logo_cours_transversal_noir_rvb.png`;
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     const bottomLogo = document.getElementById('bottomLogo');
+    let btn = document.getElementById('toggleThemeBtn');
     if (e.matches) {
         bottomLogo.src = 'src/styles/icon/logo_cours_transversal_blanc_rvb.png';
+        btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
     } else {
         bottomLogo.src = 'src/styles/icon/logo_cours_transversal_blanc_rvb.png';
+        btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
     }
 });
 
@@ -844,3 +851,10 @@ const randomIndex = Math.floor(Math.random() * bgImgUrl.length);
 const randomElement = bgImgUrl[randomIndex];
 document.getElementById("body").style.backgroundImage = `url(${randomElement.img})`;
 document.documentElement.setAttribute('data-theme', randomElement.theme);
+
+function toggleTheme() {
+    const randomIndex = Math.floor(Math.random() * bgImgUrl.length);
+    const randomElement = bgImgUrl[randomIndex];
+    document.getElementById("body").style.backgroundImage = `url(${randomElement.img})`;
+    document.documentElement.setAttribute('data-theme', randomElement.theme);
+}

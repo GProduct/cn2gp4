@@ -49,6 +49,15 @@
         object-fit: contain;
     }
 
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        align-content: center;
+        padding: 10px;
+    }
+
     body {
         background-color: var(--md-sys-color-surface);
         display: flex;
@@ -56,8 +65,8 @@
         align-items: center;
         flex-direction: column;
         background-size: cover;
-        -webkit-backdrop-filter: blur(25px);
-        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px) brightness(1.5);
         margin: 0px;
     }
 
@@ -363,6 +372,19 @@
         object-fit: contain;
     }
 
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        align-content: center;
+        padding: 10px 0px 0px 10px;
+    }
+
+    header button{
+        padding: 5px 10px 5px 10px;
+    }
+
     body {
         background-color: var(--md-sys-color-surface);
         display: flex;
@@ -370,8 +392,8 @@
         align-items: center;
         flex-direction: column;
         background-size: cover;
-        -webkit-backdrop-filter: blur(25px) brightness(0.5);
-        backdrop-filter: blur(25px) brightness(0.5);
+        -webkit-backdrop-filter: blur(15px) brightness(0.5);
+        backdrop-filter: blur(15px) brightness(0.5);
         margin: 0px;
     }
 
