@@ -52,7 +52,7 @@
     body {
         background-color: var(--md-sys-color-surface);
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
         align-items: center;
         flex-direction: column;
         background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);
@@ -364,15 +364,10 @@
         object-fit: contain;
     }
 
-    html {
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-
     body {
         background-color: var(--md-sys-color-surface);
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
         align-items: center;
         flex-direction: column;
         background-image: url(https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_640.jpg);

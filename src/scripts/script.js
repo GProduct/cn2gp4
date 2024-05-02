@@ -64,9 +64,11 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "",
+        unité: "e-mails ",
         getAnswer: true,
         answer: null,
-        formule: 0.00364,
+        userAnswer: 52,
+        formule: 0.00364*52,
         approx: 1.086956522,
         placeholder: "Entrez une valeur",
         prevQuestion : null,
@@ -81,9 +83,11 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "heures",
+        unité: "heures",
         getAnswer: true,
         answer: null,
-        formule: 0.0622,
+        userAnswer: 52,
+        formule: 0.0622*52,
         approx: 1.081081081,
         placeholder: "Entrez une valeur en ",
         prevQuestion : ["0"],
@@ -98,9 +102,11 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "Go",
+        unité: "Go",
         getAnswer: true,
         answer: null,
-        formule: 0.249,
+        userAnswer: 52,
+        formule: 0.249*52,
         approx: 0.8103448276,
         placeholder: "Entrez une valeur en ",
         prevQuestion : ["1"],
@@ -115,8 +121,10 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "Go",
+        unité: "Go de données stockées",
         getAnswer: true,
         answer: null,
+        userAnswer: null,
         formule: 0.000525,
         approx: 1.267037037,
         placeholder: "Entrez une valeur en ",
@@ -130,6 +138,7 @@ let questions = [
         answerType: "button",
         getAnswer: false,
         answer: null,
+        userAnswer: null,
         formule: null,
         approx: null,
         placeholder: null,
@@ -142,6 +151,7 @@ let questions = [
         answerType: "button",
         getAnswer: false,
         answer: null,
+        userAnswer: null,
         formule: null,
         approx: null,
         placeholder: null,
@@ -157,9 +167,11 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "",
+        unité: "visioconférences ",
         getAnswer: true,
         answer: null,
-        formule: 0.1, //A modifier
+        userAnswer: 52,
+        formule: 0.1*52, //A modifier
         approx: 0.8064516129,
         placeholder: "Entrez une valeur",
         prevQuestion : ["4-1"],
@@ -174,9 +186,11 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "",
+        unité: "visioconférences ",
         getAnswer: true,
         answer: null,
-        formule: 0.1, //A modifier
+        userAnswer: 52,
+        formule: 0.1*52, //A modifier
         approx: 0.8064516129,
         placeholder: "Entrez une valeur",
         prevQuestion : ["4-1"],
@@ -191,8 +205,11 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "",
+        unité: "requêtes ",
         getAnswer: true,
-        formule: 0.00123,
+        answer: null,
+        userAnswer: 52,
+        formule: 0.00123*52,
         approx: 6.039726027,
         placeholder: "Entrez une valeur",
         prevQuestion : ["4-1-1", "4-1-2"],
@@ -227,6 +244,17 @@ let questions = [
             null, 
             null, 
             null
+        ],
+        userAnswer: [
+            1, 
+            1, 
+            1, 
+            1, 
+            1, 
+            1, 
+            1, 
+            1, 
+            1
         ],
         formule: [
             33.6,
@@ -566,6 +594,7 @@ function fetchAnswers(questionId) {
     let question = questions.find(q => q.id === questionId);
     if(question.getAnswer && question.answerType == 'number') {
         userAnswer = document.getElementById("answer" + questionId).value;
+        question.userAnswer = question.userAnswer * userAnswer;
         if(question.exactVal == false) {    //Si l'utilisateur entre une valeur approximative, on applique la formule d'approximation
             correctedAnswer = (userAnswer*question.approx).toFixed(2);
             definitiveAnswer = (correctedAnswer*question.formule).toFixed(2);
@@ -575,7 +604,7 @@ function fetchAnswers(questionId) {
         if(definitiveAnswer < question.minimum) {   //Si la réponse est inférieure à la valeur minimale, on affiche une alerte
             alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive`);
         } else {
-            question.answer = definitiveAnswer * 52;    //on faiot la multiplication par 52 pour avoir la valeur annuelle
+            question.answer = definitiveAnswer;    //on faiot la multiplication par 52 pour avoir la valeur annuelle
             console.log("réponse donnée par l'utilisateur : " + userAnswer);
             console.log("réponse avec approximation : " + correctedAnswer);
             console.log("réponse définitive en KgCo2: " + definitiveAnswer);
@@ -585,6 +614,7 @@ function fetchAnswers(questionId) {
     } else if(question.getAnswer && question.answerType == 'checkbox') {
         for (let i = 0; i < question.options.length; i++) {
             userAnswer = document.getElementById(questionId+ question.options[i]).value;
+            question.userAnswer[i] = question.userAnswer[i] * userAnswer;
             if(question.exactVal == false) {
                 correctedAnswer = (userAnswer*question.approx[i]).toFixed(2);
                 definitiveAnswer = (correctedAnswer*question.formule[i]).toFixed(2);
@@ -704,13 +734,14 @@ function displayStats(resultsGlobal, total1, total2) {
                     return;
                 } else {
                     value = question.answer;
-                    if(value > 100) {
-                        value = 100;
+                    let percent = ((value * 100)/total1).toFixed(2);
+                    if(percent > 100) {
+                        percent = 100;
                     }
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = question.category + " : " + ((value * 100)/total1).toFixed(2) + "%";
+                    resultText.innerHTML = `${question.category} : ${percent}% avec ${value} Kg de CO2 émi pour ${question.userAnswer} ${question.unité} par an.`;
                     statsArea.appendChild(resultText);
-                    displayProgressBar(statsArea, total1, value);
+                    displayProgressBar(statsArea, percent);
                 }
             }
         });
@@ -732,14 +763,14 @@ function displayStats(resultsGlobal, total1, total2) {
                         return;
                     } else {
                         value = answer;
-                        if(value > 100) 
-                        {
-                            value = 100;
+                        let percent = ((value * 100)/total2).toFixed(2);
+                        if(percent > 100) {
+                            percent = 100;
                         }
                         let resultText = document.createElement('p');
-                        resultText.innerHTML = question.options[i] + " : " + ((value * 100)/total2).toFixed(2) + "%";
+                        resultText.innerHTML = `${question.options[i]} : ${percent}% avec ${value} Kg de CO2 par an pour ${question.userAnswer[i]} appareil(s).`;
                         statsArea1.appendChild(resultText);
-                        displayProgressBar(statsArea1, total2, value);
+                        displayProgressBar(statsArea1, percent);
                     }
                     i++;
                 });
@@ -749,8 +780,8 @@ function displayStats(resultsGlobal, total1, total2) {
 }
 
 //Fonction pour afficher des barre de progression
-function displayProgressBar(statsArea, total, value) {
-    if(value == 0) {
+function displayProgressBar(statsArea, percent) {
+    if(percent == 0) {
         return;
     } else {
         let progressBarBg = document.createElement('div');
@@ -764,8 +795,7 @@ function displayProgressBar(statsArea, total, value) {
         let progressBarFg = document.createElement('div');
         progressBarFg.id = "progressBarFg";
         progressBarFg.className = "progress-bar-fg-a";
-        let ratio = (value * 100)/total;
-        progressBarFg.style.width = `${ratio}%`;
+        progressBarFg.style.width = `${percent}%`;
         progressBarBg.appendChild(progressBarFg);
     }
 }
