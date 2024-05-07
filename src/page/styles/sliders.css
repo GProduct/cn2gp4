@@ -1,0 +1,63 @@
+@import url(tokens.css); /*Couleurs du theme*/
+@import url(colors.module.css);
+@import url(typography.module.css);
+@import url(theme.light.css) (prefers-color-scheme: light);
+@import url(theme.dark.css) (prefers-color-scheme: dark);
+
+
+@media (prefers-color-scheme: light) {
+    
+    .progress-bar-bg {
+        background-color: var(--md-sys-color-primary);
+        border-radius: 10px;
+        height: 25px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .progress-bar-fg {
+        background-color: var(--md-sys-color-on-primary);
+        border-radius: 10px;
+        height: 100%;
+        width: 50%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    
+    .progress-bar-bg {
+        background-color: var(--md-sys-color-primary);
+        border-radius: 10px;
+        height: 25px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .progress-bar-fg {
+        background-color: var(--md-sys-color-on-primary);
+        border-radius: 10px;
+        height: 100%;
+        width: 50%;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+        background: var(--md-sys-color-primary);
+    }
+      
+    /******** Firefox ********/
+    input[type="range"]::-moz-range-track {
+        background: var(--md-sys-color-primary);
+    }
+
+    /***** Thumb Styles *****/
+    /***** Chrome, Safari, Opera, and Edge Chromium *****/
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        margin-top: -12px; /* Centers thumb on the track */
+        background-color: #073840;
+        height: 2rem;
+        width: 1rem;    
+    }
+
+}

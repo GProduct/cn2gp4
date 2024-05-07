@@ -31,6 +31,13 @@ let references = [
     },
 ];
 
+let activities = [
+    {
+        listLink: "https://vie-de-campus.unige.ch/sport-culture/sport"
+        ,
+    }
+];
+
 //PILE DES ACTIONS
 //c'est une pile qui enregiste les pages par lesquelles l'utilisateur est passé pour que 
 //l'utilisateur puisse revenir en arrière
