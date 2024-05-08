@@ -366,7 +366,7 @@ function displayQuestion(question) {
             }
         });
         let label = document.createElement('label')
-        label.innerHTML = "J'entre une valeur exacte";
+        label.innerHTML = "Cocher la case si la valeur entrée est exacte et non approximative";
         label.htmlFor = "exactVal" + question.id;
         checkboxDiv.appendChild(checkbox);
         checkboxDiv.appendChild(label);
@@ -702,6 +702,12 @@ function displayResults() {
     resultsArea.id = "resultsArea";
     resultsArea.className = 'column';
     resultsGlobal.appendChild(resultsArea);
+
+    //Affichage du chiffre total
+    let totalText = document.createElement('p');
+    totalText.innerHTML = `${total} Kg de CO2`;
+    totalText.className = 'major-text';
+    resultsArea.appendChild(totalText);
 
     //Création de la phrase pour afficher les résultats
     let questionText = document.createElement('p');

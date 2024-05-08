@@ -7,6 +7,21 @@
 /* Styles pour le thème clair */
 @media (prefers-color-scheme: light) {
 
+    .major-text {
+        color: var(--md-sys-color-on-surface);
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+        font-family: var(--md-sys-typescale-title-large-font-family-name);
+        font-style: var(--md-sys-typescale-title-large-font-family-style);
+        font-weight: var(--md-sys-typescale-title-large-font-weight);
+        font-size: var(--md-sys-typescale-title-large-font-size);
+        letter-spacing: var(--md-sys-typescale-title-large-tracking);
+        line-height: var(--md-sys-typescale-title-large-height);
+        text-transform: var(--md-sys-typescale-title-large-text-transform);
+        text-decoration: var(--md-sys-typescale-title-large-text-decoration);
+    }
+
     .question-text {
         color: var(--md-sys-color-on-surface);
         font-size: x-large;
@@ -35,7 +50,7 @@
         width: 100%;
         height: 0px;
         border-radius: 25px;
-        background-color: var(--md-sys-color-secondary);
+        background-color: var(--md-sys-color-on-secondary);
         transition: 0.25s;
         transition: height 0.25s;
     }
@@ -44,7 +59,7 @@
         width: 0%;
         height: 100%;
         border-radius: 25px;
-        background-color: var(--md-sys-color-on-secondary);
+        background-color: var(--md-sys-color-secondary);
         transition: 0.25s;
         object-fit: contain;
     }
@@ -60,6 +75,7 @@
     header button{
         margin: 5px;
         padding: 5px 10px 5px 10px;
+        font-weight: bolder;
     }
 
     body {
@@ -119,7 +135,7 @@
         color : var(--md-sys-color-on-surface-variant);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
@@ -158,7 +174,7 @@
         color : var(--md-sys-color-on-tertiary-container);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
@@ -167,11 +183,13 @@
     .column button {
         background-color: var(--md-sys-color-tertiary);
         color: var(--md-sys-color-on-tertiary);
+        font-weight: bolder;
     }
 
     .column button:hover {
         background-color: var(--md-sys-color-on-tertiary);
         color: var(--md-sys-color-tertiary);
+        font-weight: bolder;
     }
 
     .buttons-container-row {
@@ -193,12 +211,14 @@
         padding: 10px;
         cursor: pointer;
         transition: 0.5s;
+        font-weight: bolder;
     }
 
     button:hover {
         background-color: var(--md-sys-color-on-tertiary-container);
         color: var(--md-sys-color-tertiary-container);
         transition: 0.5s;
+        font-weight: bolder;
     }
 
     input[type="number"] {
@@ -296,7 +316,7 @@
         display: flex;
         flex-direction: row;
         align-content: center;
-        align-items: center;
+        align-items: flex-end;
         justify-content: left;
     }
 
@@ -362,9 +382,30 @@
     
 @media (prefers-color-scheme: dark) {
 
+    *{
+        font-family: "roboto";
+        font-weight: normal;
+    }
+
+    .major-text {
+        color: var(--md-sys-color-on-surface);
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+        font-family: var(--md-sys-typescale-title-large-font-family-name);
+        font-style: var(--md-sys-typescale-title-large-font-family-style);
+        font-weight: bolder;
+        font-size: var(--md-sys-typescale-title-large-font-size);
+        letter-spacing: var(--md-sys-typescale-title-large-tracking);
+        line-height: var(--md-sys-typescale-title-large-height);
+        text-transform: var(--md-sys-typescale-title-large-text-transform);
+        text-decoration: var(--md-sys-typescale-title-large-text-decoration);
+    }
+
     .question-text {
         color: var(--md-sys-color-on-surface);
         font-size: x-large;
+        font-weight: bold;
         margin: 0px;
     }
 
@@ -390,7 +431,7 @@
         width: 100%;
         height: 0px;
         border-radius: 25px;
-        background-color: var(--md-sys-color-secondary);
+        background-color: var(--md-sys-color-on-secondary);
         transition: 0.25s;
         transition: height 0.25s;
     }
@@ -399,7 +440,7 @@
         width: 0%;
         height: 100%;
         border-radius: 25px;
-        background-color: var(--md-sys-color-on-secondary);
+        background-color: var(--md-sys-color-secondary);
         transition: 0.25s;
         object-fit: contain;
     }
@@ -415,6 +456,7 @@
     header button{
         margin: 5px;
         padding: 5px 10px 5px 10px;
+        font-weight: bolder;
     }
 
     body {
@@ -427,11 +469,6 @@
         -webkit-backdrop-filter: blur(15px) brightness(0.5);
         backdrop-filter: blur(15px) brightness(0.5);
         margin: 0px;
-    }
-
-    *{
-        font-family: "roboto";
-        font-weight: bold;
     }
 
     footer {
@@ -474,7 +511,7 @@
         color : var(--md-sys-color-on-surface-variant);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
@@ -513,7 +550,7 @@
         color : var(--md-sys-color-on-tertiary-container);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
@@ -522,11 +559,13 @@
     .column button {
         background-color: var(--md-sys-color-tertiary);
         color: var(--md-sys-color-on-tertiary);
+        font-weight: bolder;
     }
 
     .column button:hover {
         background-color: var(--md-sys-color-on-tertiary);
         color: var(--md-sys-color-tertiary);
+        font-weight: bolder;
     }
 
     .buttons-container-row {
@@ -548,6 +587,7 @@
         padding: 10px;
         cursor: pointer;
         transition: 0.5s;
+        font-weight: bolder;
     }
 
     button:hover {
@@ -651,7 +691,7 @@
         display: flex;
         flex-direction: row;
         align-content: center;
-        align-items: center;
+        align-items: flex-end;
         justify-content: left;
     }
 
