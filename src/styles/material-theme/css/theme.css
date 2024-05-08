@@ -317,14 +317,15 @@
         align-items: center;
         flex-direction: row;
         gap: inherit;
-        background-color: darkolivegreen;
-        border-color: darkgreen;
+        background-color: #a7d1ab;
+        border-color: var(--md-sys-color-outline);
         border-width: 1px;
         border-style: solid;
         border-radius: 10px;
         padding: 0px 10px 0px 10px;
         align-content: flex-end;
         flex-wrap: nowrap;
+        color: #204529;
     }
 
     .checkbox-container-row-b {
@@ -410,14 +411,15 @@
         align-items: center;
         flex-direction: row;
         gap: inherit;
-        background-color: darkolivegreen;
-        border-color: darkgreen;
+        background-color: #204529;
+        border-color: var(--md-sys-color-outline);
         border-width: 1px;
         border-style: solid;
         border-radius: 10px;
         padding: 0px 10px 0px 10px;
         align-content: flex-end;
         flex-wrap: nowrap;
+        color: #a7d1ab ;
     }
 
     .major-text {
