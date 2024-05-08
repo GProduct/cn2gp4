@@ -132,13 +132,13 @@
 
     .row {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
         justify-content: center;
         width: 100%;
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 1200px) {
         .row {
             flex-direction: row;
         }
@@ -487,13 +487,13 @@
 
     .row {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
         justify-content: center;
         width: 100%;
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 1200px) {
         .row {
             flex-direction: row;
         }
