@@ -344,8 +344,10 @@
         margin: 0;
         font: inherit;
         color: var(--md-sys-color-on-secondary);
-        width: 1.15em;
-        height: 1.15em;
+        min-width: 1.15em;
+        min-height: 1.15em;
+        max-width: 1.15em;
+        max-height: 1.15em;
         border: none;
         border-radius: 0.35em;
         transform: translateY(-0.075em);
@@ -737,8 +739,10 @@
         margin: 0;
         font: inherit;
         color: var(--md-sys-color-on-secondary);
-        width: 1.15em;
-        height: 1.15em;
+        min-width: 1.15em;
+        min-height: 1.15em;
+        max-width: 1.15em;
+        max-height: 1.15em;
         border: none;
         border-radius: 0.35em;
         transform: translateY(-0.075em);
