@@ -755,6 +755,7 @@ function displayResults() {
     //Création du bouton pour recommencer le questionnaire
     let resetBtn = document.createElement('button');
     resetBtn.innerHTML = `<span class="material-symbols-outlined">restart_alt</span>Recommencer le questionnaire`;
+    resetBtn.className = "reset-btn";
     resetBtn.onclick = function () {
         location.reload(); //On recharge la page pour recommencer le questionnaire
     };
@@ -803,7 +804,7 @@ function displayStats(resultsGlobal, total1, total2) {
                         percent = 100;
                     }
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = `${question.category} : ${parseInt(value).toLocaleString()} Kg de CO2 émi par an.`;
+                    resultText.innerHTML = `${question.category} : ${value} Kg de CO2 émi par an.`;
                     statsArea.appendChild(resultText);
                     displayProgressBar(statsArea, percent);
                 }

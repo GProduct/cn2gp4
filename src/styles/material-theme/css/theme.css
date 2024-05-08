@@ -178,10 +178,9 @@
         justify-content: flex-start;
         gap: 10px;
         border-radius: 25px;
-        padding: 25px;
     }
 
-    .column button {
+    .reset-btn {
         background-color: var(--md-sys-color-tertiary);
         color: var(--md-sys-color-on-tertiary);
         font-weight: bolder;
@@ -594,7 +593,7 @@
         padding: 25px;
     }
 
-    .column button {
+    .reset-btn {
         background-color: var(--md-sys-color-tertiary);
         color: var(--md-sys-color-on-tertiary);
         font-weight: bolder;
