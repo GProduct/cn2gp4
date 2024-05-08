@@ -836,7 +836,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     const bottomLogo = document.getElementById('bottomLogo');
     let btn = document.getElementById('toggleThemeBtn');
     btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
-    bottomLogo.src = `src/styles/icon/logo_cours_transversal_noir_rvb.png`;
+    bottomLogo.src = `src/styles/icon/logo_cours_transversal_blanc_rvb.png`;
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
