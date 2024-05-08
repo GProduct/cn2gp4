@@ -649,7 +649,8 @@ function fetchAnswers(questionId) {
         userAnswer = document.getElementById("answer" + questionId).value;
         question.userAnswer = question.userAnswer * userAnswer;
         if(question.exactVal == false) {    //Si l'utilisateur entre une valeur approximative, on applique la formule d'approximation
-            correctedAnswer = (userAnswer*question.approx).toFixed(2);
+            correctedAnswer = (userAnswer*question.approx).toFixed(2)
+            ;
             definitiveAnswer = (correctedAnswer*question.formule).toFixed(2);
         } else {    //Sinon, on applique la formule exacte
             definitiveAnswer = (userAnswer*question.formule).toFixed(2);
@@ -771,7 +772,7 @@ function displayReferences(reference, resultsArea, total) {
         referenceDiv.className = 'reference';
         resultsArea.appendChild(referenceDiv);
         let referenceText = document.createElement('p');
-        referenceText.innerHTML = `vous emmetez autant que ${convertion.toFixed(0).toLocaleString()} ${reference.unitéQuantité} de ${reference.nom}`;
+        referenceText.innerHTML = `vous emmetez autant que ${parseInt(convertion).toLocaleString()} ${reference.unitéQuantité} de ${reference.nom}`;
         referenceDiv.appendChild(referenceText);
     }
 }
@@ -802,7 +803,7 @@ function displayStats(resultsGlobal, total1, total2) {
                         percent = 100;
                     }
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = `${question.category} : ${value.toLocaleString()} Kg de CO2 émi par an.`;
+                    resultText.innerHTML = `${question.category} : ${parseInt(value).toLocaleString()} Kg de CO2 émi par an.`;
                     statsArea.appendChild(resultText);
                     displayProgressBar(statsArea, percent);
                 }
@@ -831,7 +832,7 @@ function displayStats(resultsGlobal, total1, total2) {
                             percent = 100;
                         }
                         let resultText = document.createElement('p');
-                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString()} Kg de CO2 émi par appareil`;
+                        resultText.innerHTML = `${question.options[i]} : ${parseInt(value).toLocaleString(1)} Kg de CO2 émi par appareil`;
                         statsArea1.appendChild(resultText);
                         displayProgressBar(statsArea1, percent);
                     }
