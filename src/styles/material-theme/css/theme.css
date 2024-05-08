@@ -8,7 +8,7 @@
 @media (prefers-color-scheme: light) {
 
     .question-text {
-        color: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-surface);
         font-size: x-large;
         margin: 0px;
     }
@@ -35,7 +35,7 @@
         width: 100%;
         height: 0px;
         border-radius: 25px;
-        background-color: var(--md-sys-color-tertiary-container);
+        background-color: var(--md-sys-color-secondary);
         transition: 0.25s;
         transition: height 0.25s;
     }
@@ -44,7 +44,7 @@
         width: 0%;
         height: 100%;
         border-radius: 25px;
-        background-color: var(--md-sys-color-on-tertiary-container);
+        background-color: var(--md-sys-color-on-secondary);
         transition: 0.25s;
         object-fit: contain;
     }
@@ -154,14 +154,24 @@
     }
 
     .results-global .column {
-        background-color: var(--md-sys-color-surface-variant);
-        color : var(--md-sys-color-on-surface-variant);
+        background-color: var(--md-sys-color-tertiary-container);
+        color : var(--md-sys-color-on-tertiary-container);
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
+    }
+
+    .column button {
+        background-color: var(--md-sys-color-tertiary);
+        color: var(--md-sys-color-on-tertiary);
+    }
+
+    .column button:hover {
+        background-color: var(--md-sys-color-on-tertiary);
+        color: var(--md-sys-color-tertiary);
     }
 
     .buttons-container-row {
@@ -315,7 +325,7 @@
         justify-content: center;
     }
 
-    .add-btn {
+    .column .add-btn {
         background-color: var(--md-sys-color-tertiary);
         color: var(--md-sys-color-on-tertiary);
         border: none;
@@ -324,13 +334,13 @@
         transition: 0.15s;
     }
 
-    .add-btn:hover {
+    .column .add-btn:hover {
         background-color: var(--md-sys-color-on-tertiary);
         color: var(--md-sys-color-tertiary);
         transition: 0.15s;
     }
 
-    .remove-btn {
+    .column .remove-btn {
         background-color: var(--md-sys-color-error);
         color: var(--md-sys-color-on-error);
         border: none;
@@ -339,7 +349,7 @@
         transition: 0.15s;
     }
 
-    .remove-btn:hover {
+    .column .remove-btn:hover {
         background-color: var(--md-sys-color-on-error);
         color: var(--md-sys-color-error);
         transition: 0.15s;
@@ -353,7 +363,7 @@
 @media (prefers-color-scheme: dark) {
 
     .question-text {
-        color: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-surface);
         font-size: x-large;
         margin: 0px;
     }
@@ -380,7 +390,7 @@
         width: 100%;
         height: 0px;
         border-radius: 25px;
-        background-color: var(--md-sys-color-tertiary-container);
+        background-color: var(--md-sys-color-secondary);
         transition: 0.25s;
         transition: height 0.25s;
     }
@@ -389,7 +399,7 @@
         width: 0%;
         height: 100%;
         border-radius: 25px;
-        background-color: var(--md-sys-color-on-tertiary-container);
+        background-color: var(--md-sys-color-on-secondary);
         transition: 0.25s;
         object-fit: contain;
     }
@@ -499,14 +509,24 @@
     }
 
     .results-global .column {
-        background-color: var(--md-sys-color-surface-variant);
-        color : var(--md-sys-color-on-surface-variant);
+        background-color: var(--md-sys-color-tertiary-container);
+        color : var(--md-sys-color-on-tertiary-container);
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
+    }
+
+    .column button {
+        background-color: var(--md-sys-color-tertiary);
+        color: var(--md-sys-color-on-tertiary);
+    }
+
+    .column button:hover {
+        background-color: var(--md-sys-color-on-tertiary);
+        color: var(--md-sys-color-tertiary);
     }
 
     .buttons-container-row {
@@ -660,7 +680,7 @@
         justify-content: center;
     }
 
-    .add-btn {
+    .column .add-btn {
         background-color: var(--md-sys-color-tertiary);
         color: var(--md-sys-color-on-tertiary);
         border: none;
@@ -669,13 +689,13 @@
         transition: 0.15s;
     }
 
-    .add-btn:hover {
+    .column .add-btn:hover {
         background-color: var(--md-sys-color-on-tertiary);
         color: var(--md-sys-color-tertiary);
         transition: 0.15s;
     }
 
-    .remove-btn {
+    .column .remove-btn {
         background-color: var(--md-sys-color-error);
         color: var(--md-sys-color-on-error);
         border: none;
@@ -684,7 +704,7 @@
         transition: 0.15s;
     }
 
-    .remove-btn:hover {
+    .column .remove-btn:hover {
         background-color: var(--md-sys-color-on-error);
         color: var(--md-sys-color-error);
         transition: 0.15s;
