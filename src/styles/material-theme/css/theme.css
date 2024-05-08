@@ -15,7 +15,8 @@
         font-family: var(--md-sys-typescale-title-large-font-family-name);
         font-style: var(--md-sys-typescale-title-large-font-family-style);
         font-weight: var(--md-sys-typescale-title-large-font-weight);
-        font-size: var(--md-sys-typescale-title-large-font-size);
+        font-size: -webkit-xxx-large;
+        font-size: xxx-large;
         letter-spacing: var(--md-sys-typescale-title-large-tracking);
         line-height: var(--md-sys-typescale-title-large-height);
         text-transform: var(--md-sys-typescale-title-large-text-transform);
@@ -310,6 +311,22 @@
         justify-content: space-between;
     }
 
+    .advice-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        gap: inherit;
+        background-color: darkolivegreen;
+        border-color: darkgreen;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 10px;
+        padding: 0px 10px 0px 10px;
+        align-content: flex-end;
+        flex-wrap: nowrap;
+    }
+
     .checkbox-container-row-b {
         gap: 5px;
         width: 100%;
@@ -387,6 +404,22 @@
         font-weight: normal;
     }
 
+    .advice-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        gap: inherit;
+        background-color: darkolivegreen;
+        border-color: darkgreen;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 10px;
+        padding: 0px 10px 0px 10px;
+        align-content: flex-end;
+        flex-wrap: nowrap;
+    }
+
     .major-text {
         color: var(--md-sys-color-on-surface);
         display: flex;
@@ -395,7 +428,8 @@
         font-family: var(--md-sys-typescale-title-large-font-family-name);
         font-style: var(--md-sys-typescale-title-large-font-family-style);
         font-weight: bolder;
-        font-size: var(--md-sys-typescale-title-large-font-size);
+        font-size: -webkit-xxx-large;
+        font-size: xxx-large;
         letter-spacing: var(--md-sys-typescale-title-large-tracking);
         line-height: var(--md-sys-typescale-title-large-height);
         text-transform: var(--md-sys-typescale-title-large-text-transform);

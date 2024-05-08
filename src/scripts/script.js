@@ -137,7 +137,7 @@ let questions = [
         minimum: "0",
         category: "☁️ stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
-        advice: "Quand je stocke des fichiers, des photos, des vidéos sur iClud, Google Drive, OneDrive...",
+        advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive...",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -348,6 +348,11 @@ function displayQuestion(question) {
         questionText.className = 'question-text';
         questionArea.appendChild(questionText);
 
+        //Affichage de l'advice
+        if(question.advice != null) {
+            displayAdvice(question.advice, questionArea);
+        }
+
         //creation d'une checkbox pour savoir si l'utilisateur entre une valeur exacte ou approximative
         let checkboxDiv = document.createElement('div');
         checkboxDiv.className = 'checkbox-container-row-b';
@@ -370,7 +375,6 @@ function displayQuestion(question) {
         label.htmlFor = "exactVal" + question.id;
         checkboxDiv.appendChild(checkbox);
         checkboxDiv.appendChild(label);
-
 
         //Création de la zone d'input pour la réponse
         let input = document.createElement('input')
@@ -404,6 +408,11 @@ function displayQuestion(question) {
         questionText.innerHTML = question.question;
         questionText.className = 'question-text';
         questionArea.appendChild(questionText);
+
+        //Affichage de l'advice
+        if(question.advice != null) {
+            displayAdvice(question.advice, questionArea);
+        }
 
         //On créé une div horizontale pour contenir les boutons
         let buttonsDiv = document.createElement('div');
@@ -458,6 +467,11 @@ function displayQuestion(question) {
         questionText.className = 'question-text';
         questionArea.appendChild(questionText);
 
+        //Affichage de l'advice
+        if(question.advice != null) {
+            displayAdvice(question.advice, questionArea);
+        }
+
         //creation d'une div verticale pour contenir toutes les checkbox
         let checkboxDiv = document.createElement('div');
         checkboxDiv.className = 'checkbox-container-column';
@@ -470,6 +484,7 @@ function displayQuestion(question) {
             checkboxRow.className = 'checkbox-container-row';
             checkboxDiv.appendChild(checkboxRow);
 
+            //creation d'une checkbox
             let label = document.createElement('label')
             label.innerHTML = question.options[i];
             label.htmlFor = question.id + question.options[i];
@@ -514,7 +529,6 @@ function displayQuestion(question) {
 
         //Afficher les boutons suivant et précédent
         displayButtons(questionGlobal, question);
-
         questionGlobal.style.display = 'none';  //On masque la question pour l'instant
     }
 }
@@ -568,6 +582,22 @@ function displayButtons(questionArea, question) {
         });
         buttonsDiv.appendChild(nextBtn);
     }
+}
+
+function displayAdvice(advice, questionArea) {
+    let adviceDiv = document.createElement('div');
+    adviceDiv.className = 'advice-container';
+    questionArea.appendChild(adviceDiv);
+
+    let adviceText = document.createElement('p');
+    adviceText.innerHTML = `<span class="material-symbols-outlined">info</span>`;
+    adviceText.className = 'advice-icon';
+    adviceDiv.appendChild(adviceText);
+
+    let adviceContent = document.createElement('p');
+    adviceContent.innerHTML = advice;
+    adviceContent.className = 'advice-content';
+    adviceDiv.appendChild(adviceContent);
 }
 
 //Fonction pour passer à la question suivante
@@ -705,14 +735,14 @@ function displayResults() {
 
     //Affichage du chiffre total
     let totalText = document.createElement('p');
-    totalText.innerHTML = `${total} Kg de CO2`;
+    totalText.innerHTML = `${total.toLocaleString()} Kg de CO2`;
     totalText.className = 'major-text';
     resultsArea.appendChild(totalText);
 
     //Création de la phrase pour afficher les résultats
     let questionText = document.createElement('p');
     questionText.className = 'question-text';
-    questionText.innerHTML = `En maintenant ces habitudes de consomation chaque semaine, votre empreinte carbone liée au numérique pourrait s'élever à ${total} Kg de CO2 par an`;
+    questionText.innerHTML = `En maintenant ces habitudes de consomation chaque semaine, votre empreinte carbone liée au numérique pourrait s'élever à ${total.toLocaleString()} Kg de CO2 par an`;
     resultsArea.appendChild(questionText);
 
     //Création de la phrase pour afficher les références
@@ -741,7 +771,7 @@ function displayReferences(reference, resultsArea, total) {
         referenceDiv.className = 'reference';
         resultsArea.appendChild(referenceDiv);
         let referenceText = document.createElement('p');
-        referenceText.innerHTML = `vous emmetez autant que ${convertion.toFixed(0)} ${reference.unitéQuantité} de ${reference.nom}`;
+        referenceText.innerHTML = `vous emmetez autant que ${convertion.toFixed(0).toLocaleString()} ${reference.unitéQuantité} de ${reference.nom}`;
         referenceDiv.appendChild(referenceText);
     }
 }
@@ -772,7 +802,7 @@ function displayStats(resultsGlobal, total1, total2) {
                         percent = 100;
                     }
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = `${question.category} : ${value} Kg de CO2 émi par an.`;
+                    resultText.innerHTML = `${question.category} : ${value.toLocaleString()} Kg de CO2 émi par an.`;
                     statsArea.appendChild(resultText);
                     displayProgressBar(statsArea, percent);
                 }
@@ -801,7 +831,7 @@ function displayStats(resultsGlobal, total1, total2) {
                             percent = 100;
                         }
                         let resultText = document.createElement('p');
-                        resultText.innerHTML = `${question.options[i]} : ${value} Kg de CO2 émi par appareil`;
+                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString()} Kg de CO2 émi par appareil`;
                         statsArea1.appendChild(resultText);
                         displayProgressBar(statsArea1, percent);
                     }
