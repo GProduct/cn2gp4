@@ -57,6 +57,11 @@
         align-content: center;
     }
 
+    header button{
+        margin: 5px;
+        padding: 5px 10px 5px 10px;
+    }
+
     body {
         background-color: var(--md-sys-color-surface);
         display: flex;
@@ -64,8 +69,8 @@
         align-items: center;
         flex-direction: column;
         background-size: cover;
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px) brightness(1.5) cover;
+        -webkit-backdrop-filter: blur(15px) brightness(0.5);
+        backdrop-filter: blur(15px) brightness(0.5);
         margin: 0px;
     }
 
@@ -118,6 +123,25 @@
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
+        width: -webkit-fill-available;
+    }
+
+    .row .column{
+        width: -webkit-fill-available;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    @media (min-width: 600px) {
+        .row {
+            flex-direction: row;
+        }
     }
 
     .results-global {
