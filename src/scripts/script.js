@@ -33,8 +33,18 @@ let references = [
 
 let activities = [
     {
-        listLink: "https://vie-de-campus.unige.ch/sport-culture/sport"
-        ,
+        type: "sport",
+        listLink: "https://vie-de-campus.unige.ch/sport-culture/sport",
+        activities: [
+            {
+                activityName : "fitness",
+                activiyLink : "https://vie-de-campus.unige.ch/catalogue/321-fitness-abonnement?structureIds=3",
+            },
+            {
+                activityName : "Padel",
+                activiyLink : "https://vie-de-campus.unige.ch/catalogue/252-padel--terrain?structureIds=3",
+            }
+        ]
     }
 ];
 
@@ -65,8 +75,9 @@ let questions = [
     {
         id: "0",
         minimum: "0",
-        category: "messagerie",
+        category: "📨 messagerie",
         question: "En moyenne, combien d'e-mails envoyez-vous par semaine ?",
+        advice: "Pour une utilisation plus écologique de votre messagerie, pensez à supprimer les e-mails inutiles et à vider régulièrement votre corbeille.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -84,8 +95,9 @@ let questions = [
     {
         id: "1",
         minimum: "0",
-        category: "streaming vidéo",
+        category: "📼 streaming vidéo",
         question: "En moyenne, combien d'heures par semaine passez-vous à regarder des vidéos en streaming ?",
+        advice: "Quand je regarde des films ou vidéos sur Netflix, Youtube, Amazon Prime, Disney+...",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -103,8 +115,9 @@ let questions = [
     {
         id: "2",
         minimum: "0",
-        category: "transfert de données",
+        category: "🛜 transfert de données",
         question: "En moyenne, combien de Go de données transférez-vous par semaine ?",
+        advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques... Une image pèse en moyenne 0.25 Go.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -122,8 +135,9 @@ let questions = [
     {
         id: "3",
         minimum: "0",
-        category: "stockage de données dans le cloud",
+        category: "☁️ stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
+        advice: "Quand je stocke des fichiers, des photos, des vidéos sur iClud, Google Drive, OneDrive...",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -140,7 +154,8 @@ let questions = [
     },
     {
         id: "4",
-        question: "Participez-vous à des visioconférences (Teams, Zoom, Meet, etc.) ?",
+        question: "Participez-vous à des visioconférences?",
+        advice: "Quand je participe à des réunions, des cours, des conférences en ligne, grace à Zoom, Teams, Skype..",
         options: ["oui", "non"],
         answerType: "button",
         getAnswer: false,
@@ -168,7 +183,7 @@ let questions = [
     {
         id: "4-1-1",
         minimum: "0",
-        category: "visioconférence avec caméra allumée",
+        category: "📹 visioconférence avec caméra allumée",
         question: "En moyenne, combien de fois par semaine participez-vous à des visioconférences ?",
         exactVal: false,
         options: null,
@@ -187,7 +202,7 @@ let questions = [
     {
         id: "4-1-2",
         minimum: "0",
-        category: "visioconférence avec caméra éteinte",
+        category: "🔊 visioconférence avec caméra éteinte",
         question: "En moyenne, combien de fois par semaine participez-vous à des visioconférences ?",
         exactVal: false,
         options: null,
@@ -206,8 +221,9 @@ let questions = [
     {
         id: "5",
         minimum: "0",
-        category: "recherche sur le web",
-        question: "En moyenne, combien de recherches sur le web faites-vous par semaine (recherches Google, Bing, etc.) ?",
+        category: "💻 recherche sur le web",
+        question: "En moyenne, combien de recherches sur le web faites-vous par semaine ?",
+        advice: "Quand je fais des recherches sur Google, Bing, Qwant...",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -225,7 +241,7 @@ let questions = [
     {
         id: "6",
         minimum: "0",
-        category: "Appareils électroniques",
+        category: "⚡ Appareils électroniques",
         question: "Lesquels de ces appareils possédez-vous ?",
         exactVal: true,
         options: [
@@ -726,13 +742,17 @@ function displayReferences(reference, resultsArea, total) {
 
 //Fonction pour afficher les résultats
 function displayStats(resultsGlobal, total1, total2) {
+    let row = document.createElement('div');
+        row.id = "row";
+        row.className = 'row';
+        resultsGlobal.appendChild(row);
     if(total1 == 0) {
         return;
     } else {
         let statsArea = document.createElement('div');
         statsArea.id = "statsArea";
         statsArea.className = 'column';
-        resultsGlobal.appendChild(statsArea);
+        row.appendChild(statsArea);
 
         questions.forEach(question => {
             if(question.answerType == 'number') {
@@ -746,7 +766,7 @@ function displayStats(resultsGlobal, total1, total2) {
                         percent = 100;
                     }
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = `${question.category} : ${percent}% avec ${value} Kg de CO2 émi pour ${question.userAnswer} ${question.unité} par an.`;
+                    resultText.innerHTML = `${question.category} : ${value} Kg de CO2 émi par an.`;
                     statsArea.appendChild(resultText);
                     displayProgressBar(statsArea, percent);
                 }
@@ -759,7 +779,7 @@ function displayStats(resultsGlobal, total1, total2) {
         let statsArea1 = document.createElement('div');
         statsArea1.id = "statsArea1";
         statsArea1.className = 'column';
-        resultsGlobal.appendChild(statsArea1);
+        row.appendChild(statsArea1);
 
         questions.forEach(question => {
             if(question.answerType == 'checkbox') {
@@ -775,7 +795,7 @@ function displayStats(resultsGlobal, total1, total2) {
                             percent = 100;
                         }
                         let resultText = document.createElement('p');
-                        resultText.innerHTML = `${question.options[i]} : ${percent}% avec ${value} Kg de CO2 par an pour ${question.userAnswer[i]} appareil(s).`;
+                        resultText.innerHTML = `${question.options[i]} : ${value} Kg de CO2 émi par appareil`;
                         statsArea1.appendChild(resultText);
                         displayProgressBar(statsArea1, percent);
                     }
