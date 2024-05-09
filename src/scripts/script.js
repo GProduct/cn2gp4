@@ -590,12 +590,12 @@ function displayAdvice(advice, questionArea) {
     questionArea.appendChild(adviceDiv);
 
     let adviceText = document.createElement('p');
-    adviceText.innerHTML = `<span class="material-symbols-outlined">info</span>`;
+    adviceText.innerHTML = `<div><span class="material-symbols-outlined">info</span></div>`;
     adviceText.className = 'advice-icon';
     adviceDiv.appendChild(adviceText);
 
     let adviceContent = document.createElement('p');
-    adviceContent.innerHTML = advice;
+    adviceContent.innerHTML = `<div>${advice}</div>`;
     adviceContent.className = 'advice-content';
     adviceDiv.appendChild(adviceContent);
 }
@@ -799,12 +799,12 @@ function displayStats(resultsGlobal, total1, total2) {
                     return;
                 } else {
                     value = question.answer;
-                    let percent = ((value * 100)/total1).toFixed(2);
+                    let percent = ((value * 100)/total1);
                     if(percent > 100) {
                         percent = 100;
                     }
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = `${question.category} : ${value} Kg de CO2 émi par an.`;
+                    resultText.innerHTML = `${question.category} : ${value.toLocaleString()} Kg de CO2 émi par an.`;
                     statsArea.appendChild(resultText);
                     displayProgressBar(statsArea, percent);
                 }
@@ -828,12 +828,12 @@ function displayStats(resultsGlobal, total1, total2) {
                         return;
                     } else {
                         value = answer;
-                        let percent = ((value * 100)/total2).toFixed(2);
+                        let percent = ((value * 100)/total2);
                         if(percent > 100) {
                             percent = 100;
                         }
                         let resultText = document.createElement('p');
-                        resultText.innerHTML = `${question.options[i]} : ${parseInt(value).toLocaleString(1)} Kg de CO2 émi par appareil`;
+                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString(1)} Kg de CO2 émi par appareil`;
                         statsArea1.appendChild(resultText);
                         displayProgressBar(statsArea1, percent);
                     }
@@ -854,8 +854,7 @@ function displayProgressBar(statsArea, percent) {
         progressBarBg.style.height = '25px';
         progressBarBg.className = "progress-bar-bg-a";
         progressBarBg.style.width = '100%';
-        document.body.appendChild(progressBarBg);
-        statsArea.appendChild(progressBarBg);
+        statsArea.appendChild(progressBarBg); // Add progressBarBg to statsArea
 
         let progressBarFg = document.createElement('div');
         progressBarFg.id = "progressBarFg";
@@ -892,22 +891,27 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 let bgImgUrl = [
     {
         img: "https://cdn.pixabay.com/photo/2022/11/08/21/15/cliffs-7579330_1280.jpg",
+        source: "https://pixabay.com/fr/photos/falaises-7579330/",
         theme: "red-theme",
     },
     {
         img: "https://cdn.pixabay.com/photo/2022/11/05/17/15/leaves-7572380_1280.jpg",
+        source: "https://pixabay.com/fr/photos/feuilles-7572380/",
         theme: "green-theme",
     },
     {
         img: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_1280.jpg",
+        source: "https://pixabay.com/fr/photos/route-1072821/",
         theme: "red-theme",
     },
     {
         img: "https://cdn.pixabay.com/photo/2023/01/08/09/34/jellyfish-7704801_1280.jpg",
+        source: "https://pixabay.com/fr/photos/meduse-7704801/",
         theme: "blue-theme",
     },
     {
         img: "https://cdn.pixabay.com/photo/2016/09/21/04/46/barley-field-1684052_1280.jpg",
+        source: "https://pixabay.com/fr/photos/champ-d-orge-campagne-1684052/",
         theme: "green-theme",
     }
 ]
@@ -923,3 +927,12 @@ function toggleTheme() {
     document.getElementById("body").style.backgroundImage = `url(${randomElement.img})`;
     document.documentElement.setAttribute('data-theme', randomElement.theme);
 }
+
+document.getElementById('getImgReferenceBtn').addEventListener('click', function() {
+    var r = confirm("Une nouvelle page va s'ouvrir pour vous rediriger vers la source de l'image. Voulez-vous continuer ?");
+    if (r == true) {
+        window.open(randomElement.source);
+    } else {
+        return;
+    }
+});

@@ -74,7 +74,7 @@
     }
 
     header button{
-        margin: 5px;
+        margin: 5px 0px 0px 10px;
         padding: 5px 10px 5px 10px;
         font-weight: bolder;
     }
@@ -86,8 +86,8 @@
         align-items: center;
         flex-direction: column;
         background-size: cover;
-        -webkit-backdrop-filter: blur(15px) brightness(0.5);
-        backdrop-filter: blur(15px) brightness(0.5);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
         margin: 0px;
     }
 
@@ -310,11 +310,8 @@
         justify-content: space-between;
     }
 
-    .advice-container {
+    .advice-container {    
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: row;
         gap: inherit;
         background-color: #a7d1ab;
         border-color: var(--md-sys-color-outline);
@@ -322,9 +319,8 @@
         border-style: solid;
         border-radius: 10px;
         padding: 0px 10px 0px 10px;
-        align-content: flex-end;
-        flex-wrap: nowrap;
         color: #204529;
+        align-items: center;
     }
 
     .checkbox-container-row-b {
@@ -408,9 +404,6 @@
 
     .advice-container {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: row;
         gap: inherit;
         background-color: #204529;
         border-color: var(--md-sys-color-outline);
@@ -418,9 +411,8 @@
         border-style: solid;
         border-radius: 10px;
         padding: 0px 10px 0px 10px;
-        align-content: flex-end;
-        flex-wrap: nowrap;
-        color: #a7d1ab ;
+        color: #a7d1ab;
+        align-items: center;
     }
 
     .major-text {
@@ -491,7 +483,7 @@
     }
 
     header button{
-        margin: 5px;
+        margin: 5px 0px 0px 10px;
         padding: 5px 10px 5px 10px;
         font-weight: bolder;
     }
@@ -591,6 +583,7 @@
         gap: 10px;
         border-radius: 25px;
         padding: 25px;
+        height: max-content;        
     }
 
     .reset-btn {
