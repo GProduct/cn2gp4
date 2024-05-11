@@ -9,11 +9,18 @@ let currentQuestionIndex = 0;
 
 let references = [
     {
-        "nom": "Diesel en 1 an.",
-        "quantité": "1",
-        "unitéQuantité": "Litre(s)",
-        "valeur": "2.640",
-        "unitéValeur": "Kg CO2",
+        nom: "Diesel en 1 an.",
+        quantité: "1",
+        unitéQuantité: "Litre(s)",
+        valeur: "2.640",
+        unitéValeur: "Kg CO2",
+    },
+    {
+        nom: "Genève - Paris pour en Avion",
+        quantité: "1",
+        unitéQuantité: "trajet(s)",
+        valeur: "98",
+        unitéValeur: "Kg CO2",
     },
     {
         nom: "plastique(s) depuis leur(s) fabrication",
@@ -912,17 +919,20 @@ let bgImgUrl = [
     {
         img: "https://cdn.pixabay.com/photo/2016/09/21/04/46/barley-field-1684052_1280.jpg",
         source: "https://pixabay.com/fr/photos/champ-d-orge-campagne-1684052/",
-        theme: "green-theme",
+        theme: "kaki-theme",
     }
 ]
 
-const randomIndex = Math.floor(Math.random() * bgImgUrl.length);
-const randomElement = bgImgUrl[randomIndex];
+let randomIndex = Math.floor(Math.random() * bgImgUrl.length);
+let randomElement = bgImgUrl[randomIndex];
 document.getElementById("body").style.backgroundImage = `url(${randomElement.img})`;
 document.documentElement.setAttribute('data-theme', randomElement.theme);
 
+let source = randomIndex;
+
 function toggleTheme() {
-    const randomIndex = Math.floor(Math.random() * bgImgUrl.length);
+    randomIndex = Math.floor(Math.random() * bgImgUrl.length);
+    source = randomIndex;
     const randomElement = bgImgUrl[randomIndex];
     document.getElementById("body").style.backgroundImage = `url(${randomElement.img})`;
     document.documentElement.setAttribute('data-theme', randomElement.theme);
@@ -931,7 +941,7 @@ function toggleTheme() {
 document.getElementById('getImgReferenceBtn').addEventListener('click', function() {
     var r = confirm("Une nouvelle page va s'ouvrir pour vous rediriger vers la source de l'image. Voulez-vous continuer ?");
     if (r == true) {
-        window.open(randomElement.source);
+        window.open(bgImgUrl[randomIndex].source);
     } else {
         return;
     }
