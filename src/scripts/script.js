@@ -252,15 +252,15 @@ let questions = [
         question: "Lesquels de ces appareils possédez-vous ?",
         exactVal: true,
         options: [
-            "smartphone",
-            "ordinateur portable",
-            "ordinateur fixe",
-            "écran d'ordinateur",
-            "tablette",
-            "télévision",
-            "box internet",
-            "clé USB",
-            "disque dur externe"
+            `<span class="material-symbols-outlined">smartphone</span> smartphone`,
+            `<span class="material-symbols-outlined">laptop_mac</span> ordinateur portable`,
+            `<span class="material-symbols-outlined">settop_component</span> ordinateur fixe`,
+            `<span class="material-symbols-outlined">desktop_windows</span> écran d'ordinateur`,
+            `<span class="material-symbols-outlined">phone_iphone</span> tablette`,
+            `<span class="material-symbols-outlined">tv</span> télévision`,
+            `<span class="material-symbols-outlined">router</span> box internet`,
+            `<span class="material-symbols-outlined">usb</span> clé USB`,
+            `<span class="material-symbols-outlined">database</span> disque dur externe`
         ],
         answerType: "checkbox",
         getAnswer: true,
@@ -326,7 +326,7 @@ function startSurvey() {
     for (let i = 0; i < questions.length; i++) {
         displayQuestion(questions[i]);
     }
-    document.getElementById('startSurveyBtn').style.display = 'none'; //Cache le bouton de démarrage
+    document.getElementById('divToDelete').style.display = 'none'; //Cache le bouton de démarrage
     document.getElementById('0').style.display = 'flex'; //Affiche la première question
     progressBar(0); 
 }
@@ -946,3 +946,9 @@ document.getElementById('getImgReferenceBtn').addEventListener('click', function
         return;
     }
 });
+
+function copyLink(){
+    var copyText = window.location.href;
+    navigator.clipboard.writeText(copyText);
+    alert("Lien copié dans le presse-papier !")
+}

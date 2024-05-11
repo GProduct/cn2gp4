@@ -7,6 +7,24 @@
 /* Styles pour le thème clair */
 @media (prefers-color-scheme: light) {
 
+    *{
+        font-family: "roboto";
+        font-weight: normal;
+    }
+
+    .advice-container {    
+        display: flex;
+        gap: inherit;
+        background-color: #a7d1ab;
+        border-color: var(--md-sys-color-outline);
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 10px;
+        padding: 0px 10px 0px 10px;
+        color: #204529;
+        align-items: center;
+    }
+
     .major-text {
         color: var(--md-sys-color-on-surface);
         display: flex;
@@ -14,7 +32,7 @@
         margin: 0px;
         font-family: var(--md-sys-typescale-title-large-font-family-name);
         font-style: var(--md-sys-typescale-title-large-font-family-style);
-        font-weight: var(--md-sys-typescale-title-large-font-weight);
+        font-weight: bolder;
         font-size: -webkit-xxx-large;
         font-size: xxx-large;
         letter-spacing: var(--md-sys-typescale-title-large-tracking);
@@ -26,6 +44,7 @@
     .question-text {
         color: var(--md-sys-color-on-surface);
         font-size: x-large;
+        font-weight: bold;
         margin: 0px;
     }
 
@@ -89,11 +108,6 @@
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         margin: 0px;
-    }
-
-    *{
-        font-family: "roboto";
-        font-weight: bold;
     }
 
     footer {
@@ -178,6 +192,8 @@
         justify-content: flex-start;
         gap: 10px;
         border-radius: 25px;
+        padding: 25px;
+        height: max-content;        
     }
 
     .reset-btn {
@@ -218,7 +234,6 @@
         background-color: var(--md-sys-color-on-tertiary-container);
         color: var(--md-sys-color-tertiary-container);
         transition: 0.5s;
-        font-weight: bolder;
     }
 
     input[type="number"] {
@@ -310,19 +325,6 @@
         justify-content: space-between;
     }
 
-    .advice-container {    
-        display: flex;
-        gap: inherit;
-        background-color: #a7d1ab;
-        border-color: var(--md-sys-color-outline);
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 10px;
-        padding: 0px 10px 0px 10px;
-        color: #204529;
-        align-items: center;
-    }
-
     .checkbox-container-row-b {
         gap: 5px;
         width: 100%;
@@ -392,7 +394,28 @@
 
     ::-webkit-scrollbar {
         display: none;
-      }
+    }
+
+    .round-glass {
+        padding: 20px;
+        background: var(--md-sys-color-surface-variant);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+        border: 1px solid var(--md-sys-color-outline);
+        display: flex;
+        flex-direction: column;
+        align-content: stretch;
+        justify-content: center;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+    }
 }
     
 @media (prefers-color-scheme: dark) {
@@ -784,5 +807,26 @@
 
     ::-webkit-scrollbar {
         display: none;
-      }
+    }
+
+    .round-glass {
+        padding: 20px;
+        background: var(--md-sys-color-surface-variant);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+        border: 1px solid var(--md-sys-color-outline);
+        display: flex;
+        flex-direction: column;
+        align-content: stretch;
+        justify-content: center;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+    }
 }

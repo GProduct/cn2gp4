@@ -12,15 +12,16 @@
     <header>
         <button type="button" id="toggleThemeBtn" onclick="toggleTheme();">.</button>
         <button type="button" id="getImgReferenceBtn"><span class="material-symbols-outlined">wallpaper</span></button>
+        <button type="button" id="shareBtn" onclick="copyLink();"><span class="material-symbols-outlined">share</span></button>
     </header>
     <div id="questionsContainer" class="question-display-box">
         <div id="progressBarBg" class="progress-bar-bg">
             <div id="progressBarFg" class="progress-bar-fg"></div>
         </div>
-        <div>
-            
+        <div class="round-glass" id="divToDelete">
+            <span id="questionText" class="question-text">Question</span>
+            <button id="startSurveyBtn" onclick="startSurvey();">Commencer le questionnaire</button>
         </div>
-        <button id="startSurveyBtn" onclick="startSurvey();">Commencer le questionnaire</button>
     </div>
     <footer>
         <img alt="cn2_logo" id="bottomLogo">
