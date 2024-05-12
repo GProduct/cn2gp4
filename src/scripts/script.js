@@ -9,50 +9,54 @@ let currentQuestionIndex = 0;
 
 let references = [
     {
-        nom: "Diesel en 1 an.",
+        nom: "trajet[plural] Genève-Paris pour en avion pour 1 personne.",
         quantité: "1",
-        unitéQuantité: "Litre(s)",
-        valeur: "2.640",
-        unitéValeur: "Kg CO2",
-    },
-    {
-        nom: "Genève - Paris pour en Avion",
-        quantité: "1",
-        unitéQuantité: "trajet(s)",
+        unitéQuantité: "",
         valeur: "98",
         unitéValeur: "Kg CO2",
     },
     {
-        nom: "plastique(s) depuis leur(s) fabrication",
+        nom: "sac[plural] plastique[plural].",
         quantité: "1",
-        unitéQuantité: "sac(s)",
+        unitéQuantité: "",
         valeur: "0.25",
         unitéValeur: "Kg CO2",
     },
     {
-        nom: "cigarette",
+        nom: "mégot[plural] de cigarette.",
         quantité: "1",
-        unitéQuantité: "Mégot(s)",
+        unitéQuantité: "",
         valeur: "0.14",
         unitéValeur: "Kg CO2",
     },
 ];
 
+//ILLUSTRATIONS, LES EXEMPLES NE SONT PAS REELS
 let activities = [
     {
-        type: "sport",
-        listLink: "https://vie-de-campus.unige.ch/sport-culture/sport",
-        activities: [
-            {
-                activityName : "fitness",
-                activiyLink : "https://vie-de-campus.unige.ch/catalogue/321-fitness-abonnement?structureIds=3",
-            },
-            {
-                activityName : "Padel",
-                activiyLink : "https://vie-de-campus.unige.ch/catalogue/252-padel--terrain?structureIds=3",
-            }
-        ]
+        activiyType: "sport",
+        activityName : "fitness",
+        activityLink : "https://vie-de-campus.unige.ch/catalogue/321-fitness-abonnement?structureIds=3",
+        activityIllustration : "https://cdn.pixabay.com/photo/2017/08/07/14/02/man-2604149_640.jpg",
+    },
+    {
+        activiyType: "sport",
+        activityName : "Padel",
+        activityLink : "https://vie-de-campus.unige.ch/catalogue/252-padel--terrain?structureIds=3",
+    },
+    {
+        activiyType: "sport",
+        activityName : "escalade",
+        activityLink: "https://fraude.com", 
+    },
+    {
+        activiyType: "politique",
+        activityName : "participation à une manifestation",
+        activityLink: "https://adlen.com",
     }
+];
+
+let alternatives = [
 ];
 
 //PILE DES ACTIONS
@@ -84,7 +88,7 @@ let questions = [
         minimum: "0",
         category: "📨 messagerie",
         question: "En moyenne, combien d'e-mails envoyez-vous par semaine ?",
-        advice: "Pour une utilisation plus écologique de votre messagerie, pensez à supprimer les e-mails inutiles et à vider régulièrement votre corbeille.",
+        advice: "Quand j'envoie des e-mails, des pièces jointes...\n Si j'envoie un mail à 10 personnes, cela compte pour 10 e-mails.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -104,7 +108,7 @@ let questions = [
         minimum: "0",
         category: "📼 streaming vidéo",
         question: "En moyenne, combien d'heures par semaine passez-vous à regarder des vidéos en streaming ?",
-        advice: "Quand je regarde des films ou vidéos sur Netflix, Youtube, Amazon Prime, Disney+...",
+        advice: "Quand je regarde des films sur Netflix, Amazon Prime ou alors des vidéos sur Youtube, TikTok, Instagram, etc... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -124,7 +128,7 @@ let questions = [
         minimum: "0",
         category: "🛜 transfert de données",
         question: "En moyenne, combien de Go de données transférez-vous par semaine ?",
-        advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques... Une image pèse en moyenne 0.25 Go.",
+        advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques, Ou alors quand j'envoie des fichiers, des vidéos... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -144,7 +148,7 @@ let questions = [
         minimum: "0",
         category: "☁️ stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
-        advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive...",
+        advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -230,7 +234,7 @@ let questions = [
         minimum: "0",
         category: "💻 recherche sur le web",
         question: "En moyenne, combien de recherches sur le web faites-vous par semaine ?",
-        advice: "Quand je fais des recherches sur Google, Bing, Qwant...",
+        advice: "Quand je fais des recherches sur Google, Bing, Qwant... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -754,10 +758,16 @@ function displayResults() {
     resultsArea.appendChild(questionText);
 
     //Création de la phrase pour afficher les références
-    references.forEach(reference => {
-        displayReferences(reference, resultsArea, total1);
-    });
-    displayStats(resultsGlobal, total1, total2);
+    if(total1 != 0) {
+        let title = document.createElement('p');
+        title.className = 'reference-title';
+        title.innerHTML = "Cela équivaut à ...";
+        resultsArea.appendChild(title);
+        references.forEach(reference => {
+            displayReferences(reference, resultsArea, total1);
+        });
+        displayStats(resultsGlobal, total1, total2);
+    }
 
     //Création du bouton pour recommencer le questionnaire
     let resetBtn = document.createElement('button');
@@ -767,7 +777,45 @@ function displayResults() {
         location.reload(); //On recharge la page pour recommencer le questionnaire
     };
     resultsArea.appendChild(resetBtn);
+
+    //Création du bouton pour télécharger les résultats
+    let downloadBtn = document.createElement('button');
+    downloadBtn.innerHTML = `<span class="material-symbols-outlined">download</span>Télécharger les résultats`;
+    downloadBtn.className = "download-btn";
+    downloadBtn.onclick = function () {
+        downloadResults();
+    };
+    resultsArea.appendChild(downloadBtn);
 }
+
+//Fonction pour télécharger les résultats
+function downloadResults() {
+    // Créer un nouveau document PDF
+    const doc = new jsPDF();
+
+    // Ajouter un titre
+    doc.setFontSize(20);
+    doc.text("Résultats du questionnaire", 105, 15, { align: "center" });
+
+    // Parcourir les questions et ajouter les résultats dans le PDF
+    let yOffset = 30;
+    questions.forEach((question, index) => {
+        yOffset += 10; // Espacement entre chaque question
+
+        // Ajouter le titre de la question
+        doc.setFontSize(16);
+        doc.text(`Question ${index + 1}: ${question.question}`, 10, yOffset);
+
+        // Ajouter la réponse
+        yOffset += 7;
+        doc.setFontSize(12);
+        doc.text(`Réponse: ${question.answer}`, 10, yOffset);
+    });
+
+    // Enregistrer le document PDF
+    doc.save("resultats_questionnaire.pdf");
+}
+
 
 //Fonction pour afficher les références
 function displayReferences(reference, resultsArea, total) {
@@ -780,7 +828,15 @@ function displayReferences(reference, resultsArea, total) {
         referenceDiv.className = 'reference';
         resultsArea.appendChild(referenceDiv);
         let referenceText = document.createElement('p');
-        referenceText.innerHTML = `vous emmetez autant que ${parseInt(convertion).toLocaleString()} ${reference.unitéQuantité} de ${reference.nom}`;
+        referenceText.innerHTML = `
+        <div class="references-container">
+            <div>
+                <h1>${convertion.toFixed(0).toLocaleString()}</h1>
+            </div>
+            <div>
+                <h2 id="questionText">${convertion >= 2 ? reference.nom.replaceAll("[plural]", 's') : reference.nom.replaceAll("[plural]", '')}</h2>
+            </div>
+        </div>`;
         referenceDiv.appendChild(referenceText);
     }
 }
@@ -798,6 +854,11 @@ function displayStats(resultsGlobal, total1, total2) {
         statsArea.id = "statsArea";
         statsArea.className = 'column';
         row.appendChild(statsArea);
+
+        let title = document.createElement('p');
+        title.className = 'reference-title';
+        title.innerHTML = "Les émissions de votre consommation";
+        statsArea.appendChild(title);
 
         questions.forEach(question => {
             if(question.answerType == 'number') {
@@ -817,6 +878,10 @@ function displayStats(resultsGlobal, total1, total2) {
                 }
             }
         });
+    let alternativesDivs = document.createElement("div");
+    alternativesDivs.className = "scrollmenu";
+    displayAlternatives(alternativesDivs);  
+    resultsGlobal.appendChild(alternativesDivs);
     }
     if(total2 == 0) {
         return;
@@ -825,6 +890,11 @@ function displayStats(resultsGlobal, total1, total2) {
         statsArea1.id = "statsArea1";
         statsArea1.className = 'column';
         row.appendChild(statsArea1);
+
+        let title = document.createElement('p');
+        title.className = 'reference-title';
+        title.innerHTML = "Les émissions de vos appareils.";
+        statsArea1.appendChild(title);
 
         questions.forEach(question => {
             if(question.answerType == 'checkbox') {
@@ -850,6 +920,25 @@ function displayStats(resultsGlobal, total1, total2) {
         });
     }
 }
+
+function displayAlternatives(alternativesDivs) {
+    for (let i = 0; i < activities.length; i++) {
+        let alternativesDiv = document.createElement('div');
+        alternativesDiv.className = 'alternative';
+        alternativesDiv.innerHTML = `
+        <div class="alternative-container">
+            <div>
+                <h1>${activities[i].activityName}</h1>
+            </div>
+            <div>
+                <button type="button" onclick="window.open('${activities[i].activityLink}')">Découvrir</h2>
+            </div>
+        </div>`;
+        alternativesDivs.appendChild(alternativesDiv);
+    }
+}
+
+//fonction pour afficher des alternatives
 
 //Fonction pour afficher des barre de progression
 function displayProgressBar(statsArea, percent) {
