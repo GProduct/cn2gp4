@@ -681,42 +681,40 @@ function fetchAnswers(questionId) {
     let question = questions.find(q => q.id === questionId);
     if(question.getAnswer && question.answerType == 'number') {
         userAnswer = document.getElementById("answer" + questionId).value;
-        question.userAnswer = question.userAnswer * userAnswer;
-        if(question.exactVal == false) {    //Si l'utilisateur entre une valeur approximative, on applique la formule d'approximation
-            correctedAnswer = (userAnswer*question.approx).toFixed(2)
-            ;
-            definitiveAnswer = (correctedAnswer*question.formule).toFixed(2);
-        } else {    //Sinon, on applique la formule exacte
-            definitiveAnswer = (userAnswer*question.formule).toFixed(2);
-        }
-        if(definitiveAnswer < question.minimum) {   //Si la réponse est inférieure à la valeur minimale, on affiche une alerte
-            alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive`);
-        } else {
+        if(!isNaN(userAnswer) && userAnswer > question.minimum) {
+            question.userAnswer = question.userAnswer * userAnswer;
+            if(question.exactVal == false) {    //Si l'utilisateur entre une valeur approximative, on applique la formule d'approximation
+                correctedAnswer = (userAnswer*question.approx).toFixed(2)
+                ;
+                definitiveAnswer = (correctedAnswer*question.formule).toFixed(2);
+            } else {    //Sinon, on applique la formule exacte
+                definitiveAnswer = (userAnswer*question.formule).toFixed(2);
+            }
             question.answer = definitiveAnswer;    //on faiot la multiplication par 52 pour avoir la valeur annuelle
-            //console.log("réponse donnée par l'utilisateur : " + userAnswer);
-            //console.log("réponse avec approximation : " + correctedAnswer);
-            //console.log("réponse définitive en KgCo2: " + definitiveAnswer);
-            //console.log(questions);
+            console.log("réponse donnée par l'utilisateur : " + userAnswer);
+            console.log("réponse avec approximation : " + correctedAnswer);
+            console.log("réponse définitive en KgCo2: " + definitiveAnswer);
+            console.log(questions);
             valid = true;
+        } else {
+            alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive, ou alors il se peut que vous ayez entré une lettre, veuillez entrer un chiffre.`);
+            valid = false;
         }
     } else if(question.getAnswer && question.answerType == 'checkbox') {
         for (let i = 0; i < question.options.length; i++) {
             userAnswer = document.getElementById(questionId+ question.options[i]).value;
-            question.userAnswer[i] = question.userAnswer[i] * userAnswer;
-            if(question.exactVal == false) {
-                correctedAnswer = (userAnswer*question.approx[i]).toFixed(2);
-                definitiveAnswer = (correctedAnswer*question.formule[i]).toFixed(2);
-            } else {
-                definitiveAnswer = (userAnswer*question.formule[i]).toFixed(2);
-            }
-            if(definitiveAnswer < question.minimum) {
-                alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive`);    //Si la réponse est inférieure à la valeur minimale, on affiche une alerte
-            } else {
+            if(!isNaN(userAnswer) && userAnswer > question.minimum) {
+                question.userAnswer[i] = question.userAnswer[i] * userAnswer;
+                if(question.exactVal == false) {
+                    correctedAnswer = (userAnswer*question.approx[i]).toFixed(2);
+                    definitiveAnswer = (correctedAnswer*question.formule[i]).toFixed(2);
+                } else {
+                    definitiveAnswer = (userAnswer*question.formule[i]).toFixed(2);
+                }
                 question.answer[i] = definitiveAnswer;
                 //console.log("réponse donnée par l'utilisateur : " + userAnswer);
                 //console.log("réponse avec approximation : " + correctedAnswer);
-                //console.log("réponse définitive en KgCo2: " + definitiveAnswer);
-                //console.log(questions);
+                //console.log("réponse définitive en KgCo2: " + definitiveAnswer);                //console.log(questions);
                 valid = true;
             }
         }
@@ -1220,3 +1218,11 @@ function copyLink(){
 </div>
 </nav>*/
 
+function verifValue(value) {
+    //on vérifie que la valeur est un nombre
+    if(isNaN(value)) {
+        return false;
+    } else {
+        return true;
+    }
+}
