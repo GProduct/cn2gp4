@@ -35,24 +35,39 @@ let references = [
 let activities = [
     {
         activiyType: "sport",
-        activityName : "fitness",
+        activityName : "Fitness",
         activityLink : "https://vie-de-campus.unige.ch/catalogue/321-fitness-abonnement?structureIds=3",
-        activityIllustration : "https://cdn.pixabay.com/photo/2017/08/07/14/02/man-2604149_640.jpg",
+        activityIllustration : "https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558_640.jpg",
     },
     {
         activiyType: "sport",
         activityName : "Padel",
         activityLink : "https://vie-de-campus.unige.ch/catalogue/252-padel--terrain?structureIds=3",
+        activityIllustration : "https://cdn.pixabay.com/photo/2021/06/09/05/38/padel-6322458_1280.jpg",
     },
     {
         activiyType: "sport",
-        activityName : "escalade",
-        activityLink: "https://fraude.com", 
+        activityName : "Escalade",
+        activityLink: "https://vie-de-campus.unige.ch/catalogue/461-escalade-en-salle?structureIds=3&pageNo=1",
+        activityIllustration : "https://cdn.pixabay.com/photo/2014/10/12/19/50/climbing-wall-486020_960_720.jpg",
     },
     {
-        activiyType: "politique",
-        activityName : "participation à une manifestation",
-        activityLink: "https://adlen.com",
+        activiyType: "Culture",
+        activityName : "Théâtre",
+        activityLink: "https://www.unige.ch/dife/culture/activites/th%C3%A9%C3%A2tre/actions-theatrales",
+        activityIllustration : "https://cdn.pixabay.com/photo/2019/11/07/20/48/cinema-4609877_640.jpg",
+    },
+    {
+        activiyType: "Culture",
+        activityName : "Cinéma",
+        activityLink: "https://www.unige.ch/dife/vie-de-campus/retour-sur-les-evenements/le-cine-club/",
+        activityIllustration : "https://cdn.pixabay.com/photo/2014/08/19/23/40/projector-422145_1280.jpg",
+    },
+    {
+        activiyType: "Culture",
+        activityName : "Dévolopper mes soft-skills",
+        activityLink: "https://vie-de-campus.unige.ch/se-perfectionner/competences-transversales",
+        activityIllustration : "https://cdn.pixabay.com/photo/2021/02/24/20/53/abstract-6047465_1280.jpg",
     }
 ];
 
@@ -1024,19 +1039,25 @@ function displayStats(resultsGlobal, total1, total2) {
 }
 
 function displayAlternatives(alternativesDivs) {
+    document.getElementById("body").style.display = 'block';
+
+    let nav = document.createElement('nav');
+    nav.className = 'navBar';
+    document.getElementById("alternatives").appendChild(nav);
+
+    let container = document.createElement('div');
+    container.className = 'container';
+    nav.appendChild(container);
+
     for (let i = 0; i < activities.length; i++) {
-        let alternativesDiv = document.createElement('div');
-        alternativesDiv.className = 'alternative';
-        alternativesDiv.innerHTML = `
-        <div class="alternative-container">
-            <div>
-                <h1>${activities[i].activityName}</h1>
-            </div>
-            <div>
-                <button type="button" onclick="window.open('${activities[i].activityLink}')">Découvrir</h2>
-            </div>
-        </div>`;
-        alternativesDivs.appendChild(alternativesDiv);
+        let activityBox = document.createElement('div');
+        activityBox.className = 'inscrollmenu';
+        activityBox.style.backgroundImage = `url("${activities[i].activityIllustration}")`;
+        activityBox.innerHTML = `
+            <h1>${activities[i].activityName}</h1>
+            <button onclick="window.open('${activities[i].activityLink}')">découvrir</button>
+        `;
+        container.appendChild(activityBox);
     }
 }
 
@@ -1143,3 +1164,59 @@ function copyLink(){
     navigator.clipboard.writeText(copyText);
     alert("Lien copié dans le presse-papier !")
 }
+
+
+/*<nav class="navBar">
+<div class="container">
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>sport</p>
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+    <div class="inscrollmenu">
+        <p>Badminton</p>
+        <button>découvrir</button>
+    </div>
+</div>
+</nav>*/
+
