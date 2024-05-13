@@ -27,7 +27,6 @@
     display: flex;
     justify-content: center;
 }
-}
 
 .scrollmenu div{
     background-color: var(--md-sys-color-primary-container);
