@@ -14,21 +14,29 @@
 
 .scrollmenu {
     display: flex;
-    overflow: hidden;  
+    flex-wrap: wrap;
     gap: 10px;
 }
 
 .scrollmenu div {
     background-color: var(--md-sys-color-primary-container);
-    display: inline-block;
     color: var(--md-sys-color-on-primary-container);
     text-align: left;
     padding: 5px;
-    text-decoration: none;
     border-radius: 15px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+}
+}
+
+.scrollmenu div{
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    text-align: left;
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 /* Styles pour le thème clair */
@@ -480,6 +488,7 @@
         padding: 0px;
         margin: 0px;
         font-weight: 700;
+        color: black;
     }
 
     .start-btn {
@@ -493,7 +502,9 @@
     }
 }
     
-@media (prefers-color-scheme: dark) {
+@media 
+
+(prefers-color-scheme: dark) {
 
     *{
         font-family: "Poppins";
@@ -941,6 +952,7 @@
         padding: 0px;
         margin: 0px;
         font-weight: 700;
+        color: white;
     }
 
     .start-btn {
