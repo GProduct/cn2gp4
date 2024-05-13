@@ -27,7 +27,8 @@
     text-decoration: none;
     border-radius: 15px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* Styles pour le thème clair */

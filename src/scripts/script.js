@@ -56,9 +56,6 @@ let activities = [
     }
 ];
 
-let alternatives = [
-];
-
 //PILE DES ACTIONS
 //c'est une pile qui enregiste les pages par lesquelles l'utilisateur est passé pour que 
 //l'utilisateur puisse revenir en arrière
@@ -88,7 +85,8 @@ let questions = [
         minimum: "0",
         category: "📨 messagerie",
         question: "En moyenne, combien d'e-mails envoyez-vous par semaine ?",
-        advice: "Quand j'envoie des e-mails, des pièces jointes...\n Si j'envoie un mail à 10 personnes, cela compte pour 10 e-mails.",
+        advice: "Quand j'envoie des e-mails, des pièces jointes...<br> Si j'envoie un mail à 10 personnes, cela compte pour 10 e-mails.",
+        resultsAdvices: "Pour réduire l'impact de mes e-mails: <br> - zipper les pièces jointes <br> - limiter au maximum le nombre de destinataires et de pièces jointes <br> - Au lieu d'envoyer un mail à la personne à coté de moi, je privilégie les transferts USB <br> - supprimer régulièrement les e-mails inutiles (spam, newsletters...)",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -109,6 +107,7 @@ let questions = [
         category: "📼 streaming vidéo",
         question: "En moyenne, combien d'heures par semaine passez-vous à regarder des vidéos en streaming ?",
         advice: "Quand je regarde des films sur Netflix, Amazon Prime ou alors des vidéos sur Youtube, TikTok, Instagram, etc... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
+        resultsAdvices : "Pour regarder des émissions en direct, il est préférable de privilégier la TNT à l'ADSL (votre box internet). En effet, regarder une émission en streaming HD via sa box ADSL émet autant de gaz à effet de serre que de fabriquer, transporter et lire un DVD ! <br> Essayez d'activer dès que possible le mode économie d'énergie sur vos appareils.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -129,6 +128,7 @@ let questions = [
         category: "🛜 transfert de données",
         question: "En moyenne, combien de Go de données transférez-vous par semaine ?",
         advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques, Ou alors quand j'envoie des fichiers, des vidéos... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
+        resultsAdvices: "Essayer de compresser les fichiers avant de les envoyer, cela réduit la taille des fichiers et donc la consommation d'énergie.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -149,6 +149,7 @@ let questions = [
         category: "☁️ stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
         advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
+        resultsAdvices:"Avant de stocker des données dans le cloud, il est préférable de les compresser pour réduire la taille des fichiers et donc la consommation d'énergie. Il est également important de choisir des hébergeur avec une politique environnementale claire, comme des centres de données alimentés par des énergies renouvelables",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -196,6 +197,8 @@ let questions = [
         minimum: "0",
         category: "📹 visioconférence avec caméra allumée",
         question: "En moyenne, combien de fois par semaine participez-vous à des visioconférences ?",
+        advice: null,
+        resultsAdvices: "Il y a quelques mesures simples: <br>- essayez de regrouper les réunions lorsque cela est possible <br>- de désactiver la vidéo lorsqu'elle n'est pas nécessaire <br>- utiliser des plateformes de visioconférence avec des fonctionnalités d'économie d'énergie.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -215,6 +218,8 @@ let questions = [
         minimum: "0",
         category: "🔊 visioconférence avec caméra éteinte",
         question: "En moyenne, combien de fois par semaine participez-vous à des visioconférences ?",
+        advice: null,
+        resultsAdvices: "Il y a quelques mesures simples: <br>- essayez de regrouper les réunions lorsque cela est possible <br>- utiliser des plateformes de visioconférence avec des fonctionnalités d'économie d'énergie.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -235,6 +240,7 @@ let questions = [
         category: "💻 recherche sur le web",
         question: "En moyenne, combien de recherches sur le web faites-vous par semaine ?",
         advice: "Quand je fais des recherches sur Google, Bing, Qwant... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
+        resultsAdvices: "Encouragez l'utilisation de moteurs de recherche écologiques qui plantent des arbres pour chaque recherche effectuée.<br> Enregistrez en favoris les sites recherchés régulièrement plutôt que de laisser de nombreux onglets ouverts en permanence.<br> On peut également rechercher mieux en utilisant des mots-clés précis, en utilisants les raccourcis des différents navigateurs tels que la recherche avancée.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -375,10 +381,10 @@ function displayQuestion(question) {
         checkbox.addEventListener("change", function() {
             if(checkbox.checked) {
                 question.exactVal = true;
-                console.log("valeur exacte");
+                //console.log("valeur exacte");
             } else {
                 question.exactVal = false;
-                console.log("valeur approximative");
+                //console.log("valeur approximative");
             }
         });
         let label = document.createElement('label')
@@ -440,7 +446,7 @@ function displayQuestion(question) {
 
             //On ajoute un event listener pour chaque bouton
             button.addEventListener("click", function () {
-                console.log("clicked");
+                //console.log("clicked");
                 nextQuestion(question.id, question.subQuestion[i]); //On passe à la question suivante en fonction de la réponse cliquée 
             });
         }
@@ -571,10 +577,10 @@ function displayButtons(questionArea, question) {
         nextBtn.onclick = function () {
             let valid = fetchAnswers(question.id);
             if(!valid) {
-                console.log("Veuillez entrer une valeur valide");
+                //console.log("Veuillez entrer une valeur valide");
                 return;
             } else {
-                console.log("Valeur valide");
+                //console.log("Valeur valide");
                 displayResults();
             }
         };
@@ -615,14 +621,14 @@ function displayAdvice(advice, questionArea) {
 //Masque la question actuelle et affiche la question suivante
 function nextQuestion(actualId, nextId) {
     path.push(actualId);    //On ajoute l'id de la question actuelle dans la pile path pour savoir quelle question afficher en cas de retour
-    console.log("question actuelle : " + actualId);
-    console.log("prochaine question : " + nextId);
+    //console.log("question actuelle : " + actualId);
+    //console.log("prochaine question : " + nextId);
     const valid = fetchAnswers(actualId);
     if(!valid) {
-        console.log("Veuillez entrer une valeur valide");
+        //console.log("Veuillez entrer une valeur valide");
         return;
     } else {
-        console.log("Valeur valide");
+        //console.log("Valeur valide");
         document.getElementById(actualId).style.display = 'none';
         document.getElementById(nextId).style.display = 'flex';
         progressBar(nextId);
@@ -633,9 +639,9 @@ function nextQuestion(actualId, nextId) {
 //Fonction pour revenir à la question précédente
 //Masque la question actuelle et affiche la question précédente
 function previousQuestion(actualId, previousId) {
-    console.log(path)
-    console.log("question précédente : " + previousId);
-    console.log("question actuelle : " + actualId);
+    //console.log(path)
+    //console.log("question précédente : " + previousId);
+    //console.log("question actuelle : " + actualId);
     progressBar(previousId);
     document.getElementById(actualId).style.display = 'none';
     document.getElementById(previousId).style.display = 'flex';
@@ -643,7 +649,7 @@ function previousQuestion(actualId, previousId) {
 
 function progressBar(id) {
     let index = (questions.findIndex(q => q.id === id) * 100)/questions.length;
-    console.log(index);
+    //console.log(index);
     document.getElementById("progressBarBg").style.height = '25px';
     document.getElementById("progressBarFg").style.width = `${index}%`;
 }
@@ -670,10 +676,10 @@ function fetchAnswers(questionId) {
             alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive`);
         } else {
             question.answer = definitiveAnswer;    //on faiot la multiplication par 52 pour avoir la valeur annuelle
-            console.log("réponse donnée par l'utilisateur : " + userAnswer);
-            console.log("réponse avec approximation : " + correctedAnswer);
-            console.log("réponse définitive en KgCo2: " + definitiveAnswer);
-            console.log(questions);
+            //console.log("réponse donnée par l'utilisateur : " + userAnswer);
+            //console.log("réponse avec approximation : " + correctedAnswer);
+            //console.log("réponse définitive en KgCo2: " + definitiveAnswer);
+            //console.log(questions);
             valid = true;
         }
     } else if(question.getAnswer && question.answerType == 'checkbox') {
@@ -690,18 +696,18 @@ function fetchAnswers(questionId) {
                 alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive`);    //Si la réponse est inférieure à la valeur minimale, on affiche une alerte
             } else {
                 question.answer[i] = definitiveAnswer;
-                console.log("réponse donnée par l'utilisateur : " + userAnswer);
-                console.log("réponse avec approximation : " + correctedAnswer);
-                console.log("réponse définitive en KgCo2: " + definitiveAnswer);
-                console.log(questions);
+                //console.log("réponse donnée par l'utilisateur : " + userAnswer);
+                //console.log("réponse avec approximation : " + correctedAnswer);
+                //console.log("réponse définitive en KgCo2: " + definitiveAnswer);
+                //console.log(questions);
                 valid = true;
             }
         }
     } else if(!question.getAnswer) {
-        console.log("pas de réponse à récupérer");
+        //console.log("pas de réponse à récupérer");
         valid = true;
     } else {
-        console.log("erreur");
+        //console.log("erreur");
     }
     return valid;
 }
@@ -714,14 +720,14 @@ function calculateResults() {
         if(questions[i].answerType == 'number' && questions[i].answer != null) {
             total = total + parseInt(questions[i].answer);
         } else if(questions[i].answerType == 'checkbox' && questions[i].answer != null) {
-            console.log("dans la boucle des checkbox");
+            //console.log("dans la boucle des checkbox");
             questions[i].answer.forEach(answer => {
                 subtotal = subtotal + parseInt(answer);
-                console.log("subtotal : " + subtotal);
+                //console.log("subtotal : " + subtotal);
             });
         }
     }
-    console.log("total : " + total);
+    //console.log("total : " + total);
     return [total, subtotal];
 }
 
