@@ -607,7 +607,7 @@ function displayAdvice(advice, questionArea) {
     questionArea.appendChild(adviceDiv);
 
     let adviceText = document.createElement('p');
-    adviceText.innerHTML = `<div><span class="material-symbols-outlined">info</span></div>`;
+    adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">info</span></div>`;
     adviceText.className = 'advice-icon';
     adviceDiv.appendChild(adviceText);
 
@@ -751,28 +751,79 @@ function displayResults() {
     resultsArea.className = 'column';
     resultsGlobal.appendChild(resultsArea);
 
-    //Affichage du chiffre total
-    let totalText = document.createElement('p');
-    totalText.innerHTML = `${total.toLocaleString()} Kg de CO2`;
-    totalText.className = 'major-text';
-    resultsArea.appendChild(totalText);
-
-    //Création de la phrase pour afficher les résultats
-    let questionText = document.createElement('p');
-    questionText.className = 'question-text';
-    questionText.innerHTML = `En maintenant ces habitudes de consomation chaque semaine, votre empreinte carbone liée au numérique pourrait s'élever à ${total.toLocaleString()} Kg de CO2 par an`;
-    resultsArea.appendChild(questionText);
-
     //Création de la phrase pour afficher les références
-    if(total1 != 0) {
-        let title = document.createElement('p');
-        title.className = 'reference-title';
-        title.innerHTML = "Cela équivaut à ...";
-        resultsArea.appendChild(title);
+    if(total1 != 0 && total2 != 0) {
+        //Affichage du chiffre total des émissions de CO2 sur 1 an
+        let totalText = document.createElement('p');
+        totalText.innerHTML = `Total d'émission sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
+        totalText.className = 'major-text';
+        resultsArea.appendChild(totalText);
+
+        //Création de la phrase pour expliquer les résultats
+        let questionText = document.createElement('p');
+        questionText.className = 'question-text';
+        questionText.innerHTML = `Cela ne concerne que les émissions de CO2 liées à votre consommation numérique <u>sur 1 an</u>, celle de vos appareils n'est pas prise en compte ici. Au total, vos habitudes de consommation numérique équivalent à :`;
+        resultsArea.appendChild(questionText);
+        references.forEach(reference => {
+            displayReferences(reference, resultsArea, total1);
+        });
+
+        //Création d'une ligne pour séparer les résultats
+        resultsArea.appendChild(document.createElement('hr'));
+
+        //Affichage du chiffre total des émissions de CO2 sur 1 an
+        let totalText2 = document.createElement('p');
+        totalText2.innerHTML = `Total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
+        totalText2.className = 'major-text';
+        resultsArea.appendChild(totalText2);
+
+        //Création de la phrase pour expliquer les résultats
+        let questionText2 = document.createElement('p');
+        questionText2.className = 'question-text';
+        questionText2.innerHTML = `Cela ne concerne que les émissions de CO2 liées à vos appareils <u>tout au long de leurs vies</u>, de leur fabrication à leur destruction ou recyclage. Au total, la consommation de vos appareils équivaut à :`;
+        resultsArea.appendChild(questionText2);
+        references.forEach(reference => {
+            displayReferences(reference, resultsArea, total2);
+        });
+        displayStats(resultsGlobal, total1, total2);
+    } else if(total1 != 0 && total2 == 0) {
+        //Affichage du chiffre total des émissions de CO2 sur 1 an
+        let totalText = document.createElement('p');
+        totalText.innerHTML = `Total d'émission sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
+        totalText.className = 'major-text';
+        resultsArea.appendChild(totalText);
+
+        //Création de la phrase pour expliquer les résultats
+        let questionText = document.createElement('p');
+        questionText.className = 'question-text';
+        questionText.innerHTML = `Cela ne concerne que les émissions de CO2 liées à votre consommation numérique <u>sur 1 an</u>, celle de vos appareils n'est pas prise en compte ici. Au total, vos habitudes de consommation numérique équivalent à :`;
+        resultsArea.appendChild(questionText);
         references.forEach(reference => {
             displayReferences(reference, resultsArea, total1);
         });
         displayStats(resultsGlobal, total1, total2);
+    } else if(total2 != 0 && total1 == 0){
+        //Affichage du chiffre total des émissions de CO2 sur 1 an
+        let totalText2 = document.createElement('p');
+        totalText2.innerHTML = `Total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
+        totalText2.className = 'major-text';
+        resultsArea.appendChild(totalText2);
+
+        //Création de la phrase pour expliquer les résultats
+        let questionText2 = document.createElement('p');
+        questionText2.className = 'question-text';
+        questionText2.innerHTML = `Cela ne concerne que les émissions de CO2 liées à vos appareils <u>tout au long de leurs vies</u>, de leur fabrication à leur destruction ou recyclage. Au total, la consommation de vos appareils équivaut à :`;
+        resultsArea.appendChild(questionText2);
+        references.forEach(reference => {
+            displayReferences(reference, resultsArea, total2);
+        });
+        displayStats(resultsGlobal, total1, total2);
+    } else if(total1 == 0 && total2 == 0){
+        //Création de la phrase pour afficher les résultats
+        let questionText = document.createElement('p');
+        questionText.className = 'question-text';
+        questionText.innerHTML = `On a rien à dire sur votre consommation numérique, vous êtes un modèle pour nous tous !`;
+        resultsArea.appendChild(questionText);
     }
 
     //Création du bouton pour recommencer le questionnaire
@@ -882,6 +933,18 @@ function displayStats(resultsGlobal, total1, total2) {
                     statsArea.appendChild(resultText);
                     displayProgressBar(statsArea, percent);
                 }
+                //On affiche les conseils pour réduire les émissions
+                let adviceDiv = document.createElement('div');
+                adviceDiv.className = 'advice-container';
+                let adviceText = document.createElement('p');
+                adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">info</span></div>`;
+                adviceText.className = 'advice-icon';
+                adviceDiv.appendChild(adviceText);
+                let adviceContent = document.createElement('p');
+                adviceContent.innerHTML = `<div>${question.resultsAdvices}</div>`;
+                adviceContent.className = 'advice-content';
+                adviceDiv.appendChild(adviceContent);
+                statsArea.appendChild(adviceDiv);
             }
         });
     let alternativesDivs = document.createElement("div");
@@ -916,7 +979,8 @@ function displayStats(resultsGlobal, total1, total2) {
                             percent = 100;
                         }
                         let resultText = document.createElement('p');
-                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString(1)} Kg de CO2 émi par appareil`;
+                        resultText.className = 'p-label';
+                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString(1)} Kg de CO2 émi${value.toLocaleString >= 2 ? "s" : ""} par an.`;
                         statsArea1.appendChild(resultText);
                         displayProgressBar(statsArea1, percent);
                     }
