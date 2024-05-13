@@ -107,7 +107,7 @@ let questions = [
         category: "📼 streaming vidéo",
         question: "En moyenne, combien d'heures par semaine passez-vous à regarder des vidéos en streaming ?",
         advice: "Quand je regarde des films sur Netflix, Amazon Prime ou alors des vidéos sur Youtube, TikTok, Instagram, etc... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
-        resultsAdvices : "Pour regarder des émissions en direct, il est préférable de privilégier la TNT à l'ADSL (votre box internet). En effet, regarder une émission en streaming HD via sa box ADSL émet autant de gaz à effet de serre que de fabriquer, transporter et lire un DVD ! <br> Essayez d'activer dès que possible le mode économie d'énergie sur vos appareils.",
+        resultsAdvices : "Pour regarder des émissions en direct, il est préférable de privilégier la TNT à l'ADSL (votre box internet). En effet, regarder une émission en streaming HD via sa box ADSL émet autant de gaz à effet de serre que de fabriquer, transporter et lire un DVD ! <br> Un autre bon geste serait d'essayer d'activer dès que possible le mode économie d'énergie sur vos appareils.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -128,7 +128,7 @@ let questions = [
         category: "🛜 transfert de données",
         question: "En moyenne, combien de Go de données transférez-vous par semaine ?",
         advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques, Ou alors quand j'envoie des fichiers, des vidéos... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
-        resultsAdvices: "Essayer de compresser les fichiers avant de les envoyer, cela réduit la taille des fichiers et donc la consommation d'énergie.",
+        resultsAdvices: "Afin de limiter leurs impact : <br>- Essayer de compresser les fichiers avant de les envoyer, cela réduit la taille des fichiers et donc la consommation d'énergie.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -149,7 +149,7 @@ let questions = [
         category: "☁️ stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
         advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
-        resultsAdvices:"Avant de stocker des données dans le cloud, il est préférable de les compresser pour réduire la taille des fichiers et donc la consommation d'énergie. Il est également important de choisir des hébergeur avec une politique environnementale claire, comme des centres de données alimentés par des énergies renouvelables",
+        resultsAdvices:"- Avant de stocker des données dans le cloud, il est préférable de les compresser pour réduire la taille des fichiers et donc la consommation d'énergie.<br>- Il est également important de choisir des hébergeur avec une politique environnementale claire, comme des centres de données alimentés par des énergies renouvelables",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -240,7 +240,7 @@ let questions = [
         category: "💻 recherche sur le web",
         question: "En moyenne, combien de recherches sur le web faites-vous par semaine ?",
         advice: "Quand je fais des recherches sur Google, Bing, Qwant... Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
-        resultsAdvices: "Encouragez l'utilisation de moteurs de recherche écologiques qui plantent des arbres pour chaque recherche effectuée.<br> Enregistrez en favoris les sites recherchés régulièrement plutôt que de laisser de nombreux onglets ouverts en permanence.<br> On peut également rechercher mieux en utilisant des mots-clés précis, en utilisants les raccourcis des différents navigateurs tels que la recherche avancée.",
+        resultsAdvices: "- Il faudrait privilégier des moteurs de recherche écologiques comme certains qui plantent des arbres pour chaque recherche effectuée.<br>- Enregistrez en favoris les sites recherchés régulièrement plutôt que de laisser de nombreux onglets ouverts en permanence.<br>- On peut également rechercher mieux en utilisant des mots-clés précis, en utilisants les raccourcis des différents navigateurs tels que la recherche avancée.",
         exactVal: false,
         options: null,
         answerType: "number",
@@ -260,6 +260,8 @@ let questions = [
         minimum: "0",
         category: "⚡ Appareils électroniques",
         question: "Lesquels de ces appareils possédez-vous ?",
+        advice: null,
+        resultsAdvices: `- Le plus important réside dans le choix des nouveaux appareil: il faut privilégier les appareils reconditionnés aux appareils neufs. Acheter un appareil neuf n'est pas interdit pour autant, il faut en profiter pour le garder le plus longtemps possible (+ de 4 ans de préférence). <br>Si vous en prenez soin, un smartphone peut être utilisé pendant 5 ans et un ordinateur portable plus de 10 ans ! <br>- Lors de l'achat, privilégiez les labels environnementaux (<a href="https://www.blauer-engel.de/en">Blue Angel</a>, <a href="https://tcocertified.com/fr/tco-certified/">TCO</a>, <a href="https://epeat.net/about-epeat">EPEAT</a>…) pour le matériel informatique, ils garantissent une utilisation plus responsable des ressources lors de la création des appareils et contribuent à réduire leur impact environnemental tout au long de leur cycle de vie, nottament à la fin. <br>- En effet, le numérique est responsable de 4% des émissions de gaz à effet de serre dans le monde, pour réduire cela, le recyclage est primordial. Si un appareil vient à être obsolète ou innutilisable, il est important de se renseigner quant aux oportunités de recyclage en magasins ou dans un point de collecte adapté.`,
         exactVal: true,
         options: [
             `<span class="material-symbols-outlined">smartphone</span> smartphone`,
@@ -607,7 +609,7 @@ function displayAdvice(advice, questionArea) {
     questionArea.appendChild(adviceDiv);
 
     let adviceText = document.createElement('p');
-    adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">info</span></div>`;
+    adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">help</span></div>`;
     adviceText.className = 'advice-icon';
     adviceDiv.appendChild(adviceText);
 
@@ -847,32 +849,38 @@ function displayResults() {
 
 //Fonction pour télécharger les résultats
 function downloadResults() {
-    // Créer un nouveau document PDF
-    const doc = new jsPDF();
+    let results = document.getElementById('results');
+    let resultsArea = document.getElementById('resultsArea');
+    let total1 = resultsArea.childNodes[0].innerHTML;
+    let total2 = resultsArea.childNodes[resultsArea.childNodes.length-1].innerHTML;
+    let references = resultsArea.childNodes[1];
+    let statsArea = resultsArea.childNodes[2];
+    let alternatives = resultsArea.childNodes[3];
+    let alternativesDivs = alternatives.childNodes[0];
 
-    // Ajouter un titre
+    let doc = new jsPDF();
     doc.setFontSize(20);
-    doc.text("Résultats du questionnaire", 105, 15, { align: "center" });
-
-    // Parcourir les questions et ajouter les résultats dans le PDF
-    let yOffset = 30;
-    questions.forEach((question, index) => {
-        yOffset += 10; // Espacement entre chaque question
-
-        // Ajouter le titre de la question
-        doc.setFontSize(16);
-        doc.text(`Question ${index + 1}: ${question.question}`, 10, yOffset);
-
-        // Ajouter la réponse
-        yOffset += 7;
-        doc.setFontSize(12);
-        doc.text(`Réponse: ${question.answer}`, 10, yOffset);
+    doc.text("Résultats de votre consommation numérique", 10, 10);
+    doc.setFontSize(16);
+    doc.text("Consommation numérique", 10, 20);
+    doc.setFontSize(14);
+    doc.text(total1, 10, 30);
+    doc.text("Appareils", 10, 40);
+    doc.text(total2, 10, 50);
+    doc.text("Références", 10, 60);
+    references.childNodes.forEach(reference => {
+        doc.text(reference.innerHTML, 10, 70);
     });
-
-    // Enregistrer le document PDF
-    doc.save("resultats_questionnaire.pdf");
+    doc.text("Conseils pour réduire les émissions", 10, 80);
+    statsArea.childNodes.forEach(advice => {
+        doc.text(advice.childNodes[1].innerHTML, 10, 90);
+    });
+    doc.text("Alternatives", 10, 100);
+    alternativesDivs.childNodes.forEach(alternative => {
+        doc.text(alternative.innerHTML, 10, 110);
+    });
+    doc.save('resultats.pdf');
 }
-
 
 //Fonction pour afficher les références
 function displayReferences(reference, resultsArea, total) {
@@ -928,16 +936,21 @@ function displayStats(resultsGlobal, total1, total2) {
                     if(percent > 100) {
                         percent = 100;
                     }
+                    let div = document.createElement('div');
+                    div.className = 'column-a';
+                    statsArea.appendChild(div);
+
                     let resultText = document.createElement('p');
-                    resultText.innerHTML = `${question.category} : ${value.toLocaleString()} Kg de CO2 émi par an.`;
-                    statsArea.appendChild(resultText);
-                    displayProgressBar(statsArea, percent);
+                    resultText.className = 'p-label';
+                    resultText.innerHTML = `${question.category} : ${value.toLocaleString()} Kg de CO2 émis par an.`;
+                    div.appendChild(resultText);
+                    displayProgressBar(div, percent);
                 }
                 //On affiche les conseils pour réduire les émissions
                 let adviceDiv = document.createElement('div');
                 adviceDiv.className = 'advice-container';
                 let adviceText = document.createElement('p');
-                adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">info</span></div>`;
+                adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">nest_eco_leaf</span></div>`;
                 adviceText.className = 'advice-icon';
                 adviceDiv.appendChild(adviceText);
                 let adviceContent = document.createElement('p');
@@ -968,6 +981,21 @@ function displayStats(resultsGlobal, total1, total2) {
         questions.forEach(question => {
             if(question.answerType == 'checkbox') {
                 let i = 0;
+            
+                //On affiche les conseils pour réduire les émissions
+                let adviceDiv = document.createElement('div');
+                adviceDiv.className = 'advice-container';
+                let adviceText = document.createElement('p');
+                adviceText.innerHTML = `<div style="display: flex;"><span class="material-symbols-outlined">nest_eco_leaf</span></div>`;
+                adviceText.className = 'advice-icon';
+                adviceDiv.appendChild(adviceText);
+                let adviceContent = document.createElement('p');
+                adviceContent.innerHTML = `<div>${question.resultsAdvices}</div>`;
+                adviceContent.className = 'advice-content';
+                adviceDiv.appendChild(adviceContent);
+                statsArea1.appendChild(adviceDiv);
+
+                //On affiche les résultats pour chaque appareil
                 question.answer.forEach(answer => {
                     let value = answer;
                     if (value == 0 || value == null) {
@@ -978,11 +1006,15 @@ function displayStats(resultsGlobal, total1, total2) {
                         if(percent > 100) {
                             percent = 100;
                         }
+                        let div = document.createElement('div');
+                        div.className = 'column-a';
+                        statsArea1.appendChild(div);
+
                         let resultText = document.createElement('p');
                         resultText.className = 'p-label';
-                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString(1)} Kg de CO2 émi${value.toLocaleString >= 2 ? "s" : ""} par an.`;
-                        statsArea1.appendChild(resultText);
-                        displayProgressBar(statsArea1, percent);
+                        resultText.innerHTML = `${question.options[i]} : ${value.toLocaleString(1)} Kg de CO2 émi${value.toLocaleString >= 2 ? "" : "s"}.`;
+                        div.appendChild(resultText);
+                        displayProgressBar(div, percent);
                     }
                     i++;
                 });

@@ -4,11 +4,13 @@
 @import url(theme.light.css) (prefers-color-scheme: light);
 @import url(theme.dark.css) (prefers-color-scheme: dark);
 
-
-
 .p-label {
     display: flex;
     gap: inherit;
+}
+
+a {
+    color: var(--md-sys-color-primary);
 }
 
 hr {
@@ -50,6 +52,26 @@ hr {
     justify-content: center;
 }
 
+*{
+    font-family: "Poppins";
+}
+
+h1, h2, h3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px;
+}
+
+h3 {
+    color: var(--md-sys-color-on-tertiary-container);
+    padding-left: 5%;
+}
+
+.p {
+    margin: 0px;
+}
+
 .round-glass {
     padding: 20px;
     background: var(--md-sys-color-surface-variant);
@@ -64,24 +86,41 @@ hr {
     justify-content: center;
     align-items: stretch;
 }
+
+.on-round-glass {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.major-text {
+    color: var(--md-sys-color-on-surface);
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    font-family: var(--md-sys-typescale-title-large-font-family-name);
+    font-style: var(--md-sys-typescale-title-large-font-family-style);
+    font-weight: bolder;
+    font-size: -webkit-xxx-large;
+    font-size: xxx-large;
+    letter-spacing: var(--md-sys-typescale-title-large-tracking);
+    line-height: var(--md-sys-typescale-title-large-height);
+    text-transform: var(--md-sys-typescale-title-large-text-transform);
+    text-decoration: var(--md-sys-typescale-title-large-text-decoration);
+}
+
+.checkbox-container-row-b {
+    gap: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.advice-container {
+    font-weight: bold;
+}
 /* Styles pour le thème clair */
 @media (prefers-color-scheme: light) {
-
-    *{
-        font-family: "Poppins";
-    }
-
-    h1, h2, h3{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 5px;
-    }
-
-    h3 {
-        color: var(--md-sys-color-on-tertiary-container);
-        padding-left: 5%;
-    }
 
     .advice-container {    
         display: flex;
@@ -94,22 +133,6 @@ hr {
         padding: 0px 10px 0px 10px;
         color: #204529;
         align-items: center;
-    }
-
-    .major-text {
-        color: var(--md-sys-color-on-surface);
-        display: flex;
-        justify-content: center;
-        margin: 0px;
-        font-family: var(--md-sys-typescale-title-large-font-family-name);
-        font-style: var(--md-sys-typescale-title-large-font-family-style);
-        font-weight: bolder;
-        font-size: -webkit-xxx-large;
-        font-size: xxx-large;
-        letter-spacing: var(--md-sys-typescale-title-large-tracking);
-        line-height: var(--md-sys-typescale-title-large-height);
-        text-transform: var(--md-sys-typescale-title-large-text-transform);
-        text-decoration: var(--md-sys-typescale-title-large-text-decoration);
     }
 
     .question-text {
@@ -391,16 +414,6 @@ hr {
         justify-content: space-between;
     }
 
-    .checkbox-container-row-b {
-        gap: 5px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        align-items: flex-end;
-        justify-content: left;
-    }
-
     input[type="checkbox"] {
         appearance: none;
         background-color: var(--md-sys-color-secondary);
@@ -522,22 +535,6 @@ hr {
 
 (prefers-color-scheme: dark) {
 
-    *{
-        font-family: "Poppins";
-    }
-
-    h1, h2, h3{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 5px;
-    }
-
-    h3 {
-        color: var(--md-sys-color-on-tertiary-container);
-        padding-left: 5%;
-    }
-
     .advice-container {
         display: flex;
         gap: inherit;
@@ -549,22 +546,6 @@ hr {
         padding: 0px 10px 0px 10px;
         color: #a7d1ab;
         align-items: center;
-    }
-
-    .major-text {
-        color: var(--md-sys-color-on-surface);
-        display: flex;
-        justify-content: center;
-        margin: 0px;
-        font-family: var(--md-sys-typescale-title-large-font-family-name);
-        font-style: var(--md-sys-typescale-title-large-font-family-style);
-        font-weight: bolder;
-        font-size: -webkit-xxx-large;
-        font-size: xxx-large;
-        letter-spacing: var(--md-sys-typescale-title-large-tracking);
-        line-height: var(--md-sys-typescale-title-large-height);
-        text-transform: var(--md-sys-typescale-title-large-text-transform);
-        text-decoration: var(--md-sys-typescale-title-large-text-decoration);
     }
 
     .question-text {
@@ -844,16 +825,6 @@ hr {
         align-content: center;
         align-items: center;
         justify-content: space-between;
-    }
-
-    .checkbox-container-row-b {
-        gap: 5px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        align-items: flex-end;
-        justify-content: left;
     }
 
     input[type="checkbox"] {
