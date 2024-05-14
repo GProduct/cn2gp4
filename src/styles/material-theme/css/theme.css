@@ -4,6 +4,24 @@
 @import url(theme.light.css) (prefers-color-scheme: light);
 @import url(theme.dark.css) (prefers-color-scheme: dark);
 
+.references-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--md-sys-color-on-surface);
+    color: var(--md-sys-color-surface);
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 15px;
+    width: -webkit-fill-available;
+}
+
+mark {
+    text-decoration: none;
+    text-shadow: none;
+}
+
 body {
     background-color: var(--md-sys-color-surface);
     display: flex;
@@ -33,10 +51,18 @@ body {
 }
 
 .inscrollmenu p{
-    color: var(--md-sys-color-on-secondary);
+    text-align: left;
+    color: #fffbff;
     font-size: 20px;
     font-weight: bold;
     margin: 0px;
+    text-shadow: 0 0 10px #000000;
+}
+
+.column-b {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .inscrollmenu {
@@ -51,17 +77,9 @@ body {
     backdrop-filter: blur(15px);
     color: white;
     gap: 5px;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: space-between;
-}
-
-.inscrollmenu h1 {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0px;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .navBar {
@@ -538,18 +556,6 @@ h3 {
         gap: 5px;
     }
 
-    .references-container {
-        display: flex;
-        flex-direction: row;
-        background-color: var(--md-sys-color-on-surface);
-        color: var(--md-sys-color-surface);
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        border-radius: 15px;
-        width: -webkit-fill-available;
-    }
-
     .references-container h1 {
         font-size: 100px;
     }
@@ -558,7 +564,7 @@ h3 {
         font-size: xxx-large;
         padding: 0px;
         margin: 0px;
-        font-weight: 700;
+        font-weight: bolder;
         color: black;
     }
 
