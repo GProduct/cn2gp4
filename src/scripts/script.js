@@ -68,6 +68,9 @@ let activities = [
         activityName : "Dévolopper mes soft-skills",
         activityLink: "https://vie-de-campus.unige.ch/se-perfectionner/competences-transversales",
         activityIllustration : "https://cdn.pixabay.com/photo/2021/02/24/20/53/abstract-6047465_1280.jpg",
+    },
+    {
+        
     }
 ];
 
@@ -681,7 +684,7 @@ function fetchAnswers(questionId) {
     let question = questions.find(q => q.id === questionId);
     if(question.getAnswer && question.answerType == 'number') {
         userAnswer = document.getElementById("answer" + questionId).value;
-        if(!isNaN(userAnswer) && userAnswer > question.minimum) {
+        if(!isNaN(userAnswer) && userAnswer >= question.minimum) {
             question.userAnswer = question.userAnswer * userAnswer;
             if(question.exactVal == false) {    //Si l'utilisateur entre une valeur approximative, on applique la formule d'approximation
                 correctedAnswer = (userAnswer*question.approx).toFixed(2)
@@ -697,13 +700,13 @@ function fetchAnswers(questionId) {
             console.log(questions);
             valid = true;
         } else {
-            alert(`La valeur entrée est inférieure à ${question.minimum}, veuillez entrer une valeur positive, ou alors il se peut que vous ayez entré une lettre, veuillez entrer un chiffre.`);
+            alert(`La valeur entrée est invalide: \n- Elle est peut être inférieure à ${question.minimum}, il faut entrer des valeurs positives. \n- Le caractère entré n'est pas un nombre. \n- Vous n'avez entré aucune valeur.`);
             valid = false;
         }
     } else if(question.getAnswer && question.answerType == 'checkbox') {
         for (let i = 0; i < question.options.length; i++) {
             userAnswer = document.getElementById(questionId+ question.options[i]).value;
-            if(!isNaN(userAnswer) && userAnswer > question.minimum) {
+            if(!isNaN(userAnswer) && userAnswer >= question.minimum) {
                 question.userAnswer[i] = question.userAnswer[i] * userAnswer;
                 if(question.exactVal == false) {
                     correctedAnswer = (userAnswer*question.approx[i]).toFixed(2);
@@ -714,9 +717,15 @@ function fetchAnswers(questionId) {
                 question.answer[i] = definitiveAnswer;
                 //console.log("réponse donnée par l'utilisateur : " + userAnswer);
                 //console.log("réponse avec approximation : " + correctedAnswer);
-                //console.log("réponse définitive en KgCo2: " + definitiveAnswer);                //console.log(questions);
+                //console.log("réponse définitive en KgCo2: " + definitiveAnswer);
+            } else if(userAnswer == null) {
                 valid = true;
+            } else {
+                alert(`La valeur de ${question.options[i]} est invalide: \n- Elle est peut être inférieure à ${question.minimum}, il faut entrer des valeurs positives. \n- Le caractère entré n'est pas un nombre. \n- Vous n'avez entré aucune valeur`);
+                valid = false;
+                break;
             }
+            valid = true;
         }
     } else if(!question.getAnswer) {
         //console.log("pas de réponse à récupérer");
@@ -779,8 +788,11 @@ function displayResults() {
         questionText.className = 'question-text';
         questionText.innerHTML = `Cela ne concerne que les émissions de CO2 liées à votre consommation numérique <u>sur 1 an</u>, celle de vos appareils n'est pas prise en compte ici. Au total, vos habitudes de consommation numérique équivalent à :`;
         resultsArea.appendChild(questionText);
+        
+        let referenceMajorDiv = document.createElement('div')
+        resultsArea.appendChild(referenceMajorDiv);
         references.forEach(reference => {
-            displayReferences(reference, resultsArea, total1);
+            displayReferences(reference, referenceMajorDiv, total1);
         });
 
         //Création d'une ligne pour séparer les résultats
@@ -797,8 +809,11 @@ function displayResults() {
         questionText2.className = 'question-text';
         questionText2.innerHTML = `Cela ne concerne que les émissions de CO2 liées à vos appareils <u>tout au long de leurs vies</u>, de leur fabrication à leur destruction ou recyclage. Au total, la consommation de vos appareils équivaut à :`;
         resultsArea.appendChild(questionText2);
+        
+        let referenceMajorDiv2 = document.createElement('div')
+        resultsArea.appendChild(referenceMajorDiv2);
         references.forEach(reference => {
-            displayReferences(reference, resultsArea, total2);
+            displayReferences(reference, referenceMajorDiv2, total2);
         });
         displayStats(resultsGlobal, total1, total2);
     } else if(total1 != 0 && total2 == 0) {
@@ -813,8 +828,11 @@ function displayResults() {
         questionText.className = 'question-text';
         questionText.innerHTML = `Cela ne concerne que les émissions de CO2 liées à votre consommation numérique <u>sur 1 an</u>, celle de vos appareils n'est pas prise en compte ici. Au total, vos habitudes de consommation numérique équivalent à :`;
         resultsArea.appendChild(questionText);
+
+        let referenceMajorDiv = document.createElement('div')
+        resultsArea.appendChild(referenceMajorDiv);
         references.forEach(reference => {
-            displayReferences(reference, resultsArea, total1);
+            displayReferences(reference, referenceMajorDiv, total1);
         });
         displayStats(resultsGlobal, total1, total2);
     } else if(total2 != 0 && total1 == 0){
@@ -829,8 +847,11 @@ function displayResults() {
         questionText2.className = 'question-text';
         questionText2.innerHTML = `Cela ne concerne que les émissions de CO2 liées à vos appareils <u>tout au long de leurs vies</u>, de leur fabrication à leur destruction ou recyclage. Au total, la consommation de vos appareils équivaut à :`;
         resultsArea.appendChild(questionText2);
+
+        let referenceMajorDiv = document.createElement('div')
+        resultsArea.appendChild(referenceMajorDiv);
         references.forEach(reference => {
-            displayReferences(reference, resultsArea, total2);
+            displayReferences(reference, referenceMajorDiv, total2);
         });
         displayStats(resultsGlobal, total1, total2);
     } else if(total1 == 0 && total2 == 0){
@@ -849,50 +870,6 @@ function displayResults() {
         location.reload(); //On recharge la page pour recommencer le questionnaire
     };
     resultsArea.appendChild(resetBtn);
-
-    //Création du bouton pour télécharger les résultats
-    let downloadBtn = document.createElement('button');
-    downloadBtn.innerHTML = `<span class="material-symbols-outlined">download</span>Télécharger les résultats`;
-    downloadBtn.className = "download-btn";
-    downloadBtn.onclick = function () {
-        downloadResults();
-    };
-    resultsArea.appendChild(downloadBtn);
-}
-
-//Fonction pour télécharger les résultats
-function downloadResults() {
-    let results = document.getElementById('results');
-    let resultsArea = document.getElementById('resultsArea');
-    let total1 = resultsArea.childNodes[0].innerHTML;
-    let total2 = resultsArea.childNodes[resultsArea.childNodes.length-1].innerHTML;
-    let references = resultsArea.childNodes[1];
-    let statsArea = resultsArea.childNodes[2];
-    let alternatives = resultsArea.childNodes[3];
-    let alternativesDivs = alternatives.childNodes[0];
-
-    let doc = new jsPDF();
-    doc.setFontSize(20);
-    doc.text("Résultats de votre consommation numérique", 10, 10);
-    doc.setFontSize(16);
-    doc.text("Consommation numérique", 10, 20);
-    doc.setFontSize(14);
-    doc.text(total1, 10, 30);
-    doc.text("Appareils", 10, 40);
-    doc.text(total2, 10, 50);
-    doc.text("Références", 10, 60);
-    references.childNodes.forEach(reference => {
-        doc.text(reference.innerHTML, 10, 70);
-    });
-    doc.text("Conseils pour réduire les émissions", 10, 80);
-    statsArea.childNodes.forEach(advice => {
-        doc.text(advice.childNodes[1].innerHTML, 10, 90);
-    });
-    doc.text("Alternatives", 10, 100);
-    alternativesDivs.childNodes.forEach(alternative => {
-        doc.text(alternative.innerHTML, 10, 110);
-    });
-    doc.save('resultats.pdf');
 }
 
 //Fonction pour afficher les références
@@ -905,17 +882,15 @@ function displayReferences(reference, resultsArea, total) {
         let referenceDiv = document.createElement('div');
         referenceDiv.className = 'reference';
         resultsArea.appendChild(referenceDiv);
-        let referenceText = document.createElement('p');
-        referenceText.innerHTML = `
-        <div class="references-container">
-            <div>
-                <h1>${convertion.toFixed(0).toLocaleString()}</h1>
-            </div>
-            <div>
-                <h2 id="questionText">${convertion >= 2 ? reference.nom.replaceAll("[plural]", 's') : reference.nom.replaceAll("[plural]", '')}</h2>
-            </div>
-        </div>`;
-        referenceDiv.appendChild(referenceText);
+        referenceDiv.innerHTML = `
+            <div class="references-container">
+                <div>
+                    <h1>${convertion.toFixed(0).toLocaleString()}</h1>
+                </div>
+                <div>
+                    <h2 id="questionText">${convertion >= 2 ? reference.nom.replaceAll("[plural]", 's') : reference.nom.replaceAll("[plural]", '')}</h2>
+                </div>
+            </div>`;
     }
 }
 
