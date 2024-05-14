@@ -139,7 +139,7 @@ let questions = [
     {
         id: "0",
         minimum: "0",
-        category: "📨 messagerie",
+        category: "📨 Messagerie",
         question: "En moyenne, combien d'e-mails envoyez-vous par semaine ?",
         advice: "Quand j'envoie des e-mails, des pièces jointes...<br> Si j'envoie un mail à 10 personnes, cela compte pour 10 e-mails.",
         resultsAdvices: "Pour réduire l'impact de mes e-mails: <br> - zipper les pièces jointes <br> - limiter au maximum le nombre de destinataires et de pièces jointes <br> - Au lieu d'envoyer un mail à la personne à coté de moi, je privilégie les transferts USB <br> - supprimer régulièrement les e-mails inutiles (spam, newsletters...)",
@@ -160,7 +160,7 @@ let questions = [
     {
         id: "1",
         minimum: "0",
-        category: "📼 streaming vidéo",
+        category: "📼 Streaming vidéo",
         question: "En moyenne, combien d'heures par semaine passez-vous à regarder des vidéos en streaming ?",
         advice: "Quand je regarde des films sur Netflix, Amazon Prime ou alors des vidéos sur Youtube, TikTok, Instagram, etc...<br>Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
         resultsAdvices : "Pour regarder des émissions en direct, il est préférable de privilégier la TNT à l'ADSL (votre box internet). En effet, regarder une émission en streaming HD via sa box ADSL émet autant de gaz à effet de serre que de fabriquer, transporter et lire un DVD ! <br> Un autre bon geste serait d'essayer d'activer dès que possible le mode économie d'énergie sur vos appareils.",
@@ -181,7 +181,7 @@ let questions = [
     {
         id: "2",
         minimum: "0",
-        category: "🛜 transfert de données",
+        category: "🛜 Transfert de données",
         question: "En moyenne, combien de Go de données transférez-vous par semaine ?",
         advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques, Ou alors quand j'envoie des fichiers, des vidéos...<br>Une image fait en moyenne ",
         resultsAdvices: "Afin de limiter leurs impact : <br>- Essayer de compresser les fichiers avant de les envoyer, cela réduit la taille des fichiers et donc la consommation d'énergie.",
@@ -202,7 +202,7 @@ let questions = [
     {
         id: "3",
         minimum: "0",
-        category: "☁️ stockage de données dans le cloud",
+        category: "☁️ Stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
         advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive...",
         resultsAdvices:"- Avant de stocker des données dans le cloud, il est préférable de les compresser pour réduire la taille des fichiers et donc la consommation d'énergie.<br>- Il est également important de choisir des hébergeur avec une politique environnementale claire, comme des centres de données alimentés par des énergies renouvelables",
@@ -251,7 +251,7 @@ let questions = [
     {
         id: "4-1-1",
         minimum: "0",
-        category: "📹 visioconférence avec caméra allumée",
+        category: "📹 Visioconférence avec caméra allumée",
         question: "En moyenne, pendant combien d'heure par semaine êtes-vous en visioconférences ?",
         advice: null,
         resultsAdvices: "Il y a quelques mesures simples: <br>- essayez de regrouper les réunions lorsque cela est possible <br>- de désactiver la vidéo lorsqu'elle n'est pas nécessaire <br>- utiliser des plateformes de visioconférence avec des fonctionnalités d'économie d'énergie.",
@@ -272,7 +272,7 @@ let questions = [
     {
         id: "4-1-2",
         minimum: "0",
-        category: "🔊 visioconférence avec caméra éteinte",
+        category: "🔊 Visioconférence avec caméra éteinte",
         question: "En moyenne, pendant combien d'heure par semaine êtes-vous en visioconférences ?",
         advice: null,
         resultsAdvices: "Il y a quelques mesures simples: <br>- essayez de regrouper les réunions lorsque cela est possible <br>- utiliser des plateformes de visioconférence avec des fonctionnalités d'économie d'énergie.",
@@ -293,8 +293,8 @@ let questions = [
     {
         id: "5",
         minimum: "0",
-        category: "💻 recherche sur le web",
-        question: "En moyenne, combien de recherches sur le web faites-vous par <U>jour<U> ?",
+        category: "💻 Recherches sur le web",
+        question: "En moyenne, combien de recherches sur le web faites-vous <U>par jour<U> ?",
         advice: "Quand je fais des recherches sur Google, Bing, Qwant...<br>Vous pouvez retrouver le nombre de recherches que vous avez effectuées sur votre navigateur en consultant votre historique de recherche.",
         resultsAdvices: "- Il faudrait privilégier des moteurs de recherche écologiques comme certains qui plantent des arbres pour chaque recherche effectuée.<br>- Enregistrez en favoris les sites recherchés régulièrement plutôt que de laisser de nombreux onglets ouverts en permanence.<br>- On peut également rechercher mieux en utilisant des mots-clés précis, en utilisants les raccourcis des différents navigateurs tels que la recherche avancée.",
         exactVal: false,
@@ -320,15 +320,15 @@ let questions = [
         resultsAdvices: `- Le plus important réside dans le choix des nouveaux appareil: il faut privilégier les appareils reconditionnés aux appareils neufs. Acheter un appareil neuf n'est pas interdit pour autant, il faut en profiter pour le garder le plus longtemps possible (+ de 4 ans de préférence). <br><br>Si vous en prenez soin, un smartphone peut être utilisé pendant 5 ans et un ordinateur portable plus de 10 ans ! <br><br>- Lors de l'achat, privilégiez les labels environnementaux (<a href="https://www.blauer-engel.de/en">Blue Angel</a>, <a href="https://tcocertified.com/fr/tco-certified/">TCO</a>, <a href="https://epeat.net/about-epeat">EPEAT</a>…) pour le matériel informatique, ils garantissent une utilisation plus responsable des ressources lors de la création des appareils et contribuent à réduire leur impact environnemental tout au long de leur cycle de vie, nottament à la fin. <br><br>- En effet, le numérique est responsable de 4% des émissions de gaz à effet de serre dans le monde, pour réduire cela, le recyclage est primordial. Si un appareil vient à être obsolète ou innutilisable, il est important de se renseigner quant aux oportunités de recyclage en magasins ou dans un point de collecte adapté.`,
         exactVal: true,
         options: [
-            `<span class="material-symbols-outlined">smartphone</span> smartphone`,
-            `<span class="material-symbols-outlined">laptop_mac</span> ordinateur portable`,
-            `<span class="material-symbols-outlined">settop_component</span> ordinateur fixe`,
-            `<span class="material-symbols-outlined">desktop_windows</span> écran d'ordinateur`,
-            `<span class="material-symbols-outlined">phone_iphone</span> tablette`,
-            `<span class="material-symbols-outlined">tv</span> télévision`,
-            `<span class="material-symbols-outlined">router</span> box internet`,
-            `<span class="material-symbols-outlined">usb</span> clé USB`,
-            `<span class="material-symbols-outlined">database</span> disque dur externe`
+            `<span class="material-symbols-outlined">smartphone</span> Smartphone`,
+            `<span class="material-symbols-outlined">laptop_mac</span> Ordinateur portable`,
+            `<span class="material-symbols-outlined">settop_component</span> Ordinateur fixe`,
+            `<span class="material-symbols-outlined">desktop_windows</span> Ecran d'ordinateur`,
+            `<span class="material-symbols-outlined">phone_iphone</span> Tablette`,
+            `<span class="material-symbols-outlined">tv</span> Télévision`,
+            `<span class="material-symbols-outlined">router</span> Box internet`,
+            `<span class="material-symbols-outlined">usb</span> Clé USB`,
+            `<span class="material-symbols-outlined">database</span> Disque dur externe`
         ],
         answerType: "checkbox",
         getAnswer: true,
@@ -817,7 +817,7 @@ function displayResults() {
     if(total1 != 0 && total2 != 0) {
         //Affichage du chiffre total des émissions de CO2 sur 1 an
         let totalText = document.createElement('p');
-        totalText.innerHTML = `Total d'émission sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
+        totalText.innerHTML = `estimation de votre total d'émissions sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
         totalText.className = 'major-text';
         resultsArea.appendChild(totalText);
 
@@ -839,7 +839,7 @@ function displayResults() {
 
         //Affichage du chiffre total des émissions de CO2 sur 1 an
         let totalText2 = document.createElement('p');
-        totalText2.innerHTML = `Total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
+        totalText2.innerHTML = `estimation du total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
         totalText2.className = 'major-text';
         resultsArea.appendChild(totalText2);
 
@@ -1059,6 +1059,8 @@ function displayAlternatives(alternativesDivs) {
     alternativesTitle.innerHTML = "Moins de temps passé sur les écrans, c'est plus de temps pour...";
     alternativesTitle.className = 'reference-title';
     alternativesTitle.style.padding = '20px';
+    alternativesTitle.style.color = 'white';
+    alternativesTitle.style.fontSize = 'calc(1.5em + 1vw)';
     document.getElementById("alternatives").appendChild(alternativesTitle);
 
     let nav = document.createElement('nav');

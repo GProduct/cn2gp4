@@ -52,7 +52,6 @@ body {
 
 .inscrollmenu p{
     text-align: left;
-    color: #fffbff;
     font-size: 20px;
     font-weight: bold;
     margin: 0px;
@@ -80,6 +79,7 @@ body {
     align-items: stretch;
     flex-direction: column;
     justify-content: space-between;
+    min-width: calc(6vh + 200px);
 }
 
 .navBar {
@@ -188,6 +188,9 @@ h3 {
 }
 /* Styles pour le thème clair */
 @media (prefers-color-scheme: light) {
+    .inscrollmenu p {
+        color: #fffbff;
+    }
 
     body {
         -webkit-backdrop-filter: blur(15px);
@@ -561,7 +564,7 @@ h3 {
     }
 
     .reference-title {
-        font-size: calc(6vw + 10px);
+        font-size: calc(6vw + 1px);
         padding: 0px;
         margin: 0px;
         font-weight: bolder;
@@ -582,6 +585,9 @@ h3 {
 @media 
 
 (prefers-color-scheme: dark) {
+    .inscrollmenu p {
+        color: white;
+    }
 
     .advice-container {
         display: flex;
@@ -967,7 +973,7 @@ h3 {
     }
 
     .reference-title {
-        font-size: calc(6vw + 10px);
+        font-size: calc(6vw + 1px);
         padding: 0px;
         margin: 0px;
         font-weight: 700;
