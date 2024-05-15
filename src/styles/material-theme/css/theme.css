@@ -4,6 +4,43 @@
 @import url(theme.light.css) (prefers-color-scheme: light);
 @import url(theme.dark.css) (prefers-color-scheme: dark);
 
+.share-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none; /* Pour Safari */
+    background-color: var(--md-sys-color-secondary);
+    margin: 0;
+    font: inherit;
+    color: var(--md-sys-color-on-secondary);
+    min-width: 1.15em;
+    min-height: 1.15em;
+    max-width: 1.15em;
+    max-height: 1.15em;
+    border: none;
+    border-radius: 0.35em;
+    position: relative; /* Positionnement relatif pour que la pseudo-classe soit positionnée par rapport à l'élément */
+    overflow: hidden; /* Pour cacher la pseudo-classe qui dépasse */
+}
+
+input[type="checkbox"]::after {
+    content: "×"; /* Caractère croix */
+    font-size: 1em; /* Taille de la croix */
+    position: absolute; /* Positionnement absolu par rapport à l'élément parent */
+    top: 50%; /* Positionnement vertical au milieu */
+    left: 50%; /* Positionnement horizontal au milieu */
+    transform: translate(-50%, -50%) scale(0); /* Centrage et mise à l'échelle initiale à zéro */
+    transition: transform 0.3s; /* Transition pour l'animation */
+}
+
+input[type="checkbox"]:checked::after {
+    transform: translate(-50%, -50%) scale(1); /* Mise à l'échelle à 1 pour afficher la croix */
+}
+
 input[type="number"] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -496,27 +533,6 @@ h3 {
         justify-content: space-between;
     }
 
-    input[type="checkbox"] {
-        appearance: none;
-        background-color: var(--md-sys-color-secondary);
-        margin: 0;
-        font: inherit;
-        color: var(--md-sys-color-on-secondary);
-        min-width: 1.15em;
-        min-height: 1.15em;
-        max-width: 1.15em;
-        max-height: 1.15em;
-        border: none;
-        border-radius: 0.35em;
-        transform: translateY(-0.075em);
-    }
-
-    input[type="checkbox"]:checked {
-        background-color: var(--md-sys-color-on-secondary);
-        color: var(--md-sys-color-secondary);
-        border: 0.1em solid var(--md-sys-color-secondary);
-    }
-
     .add-remove-container-row {
         display: flex;
         flex-direction: row;
@@ -863,27 +879,6 @@ h3 {
         align-content: center;
         align-items: center;
         justify-content: space-between;
-    }
-
-    input[type="checkbox"] {
-        appearance: none;
-        background-color: var(--md-sys-color-secondary);
-        margin: 0;
-        font: inherit;
-        color: var(--md-sys-color-on-secondary);
-        min-width: 1.15em;
-        min-height: 1.15em;
-        max-width: 1.15em;
-        max-height: 1.15em;
-        border: none;
-        border-radius: 0.35em;
-        transform: translateY(-0.075em);
-    }
-
-    input[type="checkbox"]:checked {
-        background-color: var(--md-sys-color-on-secondary);
-        color: var(--md-sys-color-secondary);
-        border: 0.1em solid var(--md-sys-color-secondary);
     }
 
     .add-remove-container-row {
