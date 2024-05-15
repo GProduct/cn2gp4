@@ -4,6 +4,31 @@
 @import url(theme.light.css) (prefers-color-scheme: light);
 @import url(theme.dark.css) (prefers-color-scheme: dark);
 
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+}
+
+.input-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+select {
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--md-sys-color-on-primary);
+    background-color: var(--md-sys-color-primary);
+    border-color: var(--md-sys-color-outline);
+}
+
 .references-container {
     display: flex;
     flex-direction: row;
@@ -186,6 +211,28 @@ h3 {
 .advice-container {
     font-weight: bold;
 }
+
+
+
+.number-input {
+    background-color: var(--md-sys-color-surface);
+    border-color: var(--md-sys-color-outline);
+    border-radius: 10px;
+    padding: 10px;
+    border-width: 0px;
+    color: var(--md-sys-color-on-surface);
+    width: -webkit-fill-available;
+}
+
+.number-input-b {
+    background-color: var(--md-sys-color-surface);
+    border-color: var(--md-sys-color-outline);
+    padding: 5px;
+    border-width: 0px;
+    color: var(--md-sys-color-on-surface);
+    width: 50px;
+}
+
 /* Styles pour le thème clair */
 @media (prefers-color-scheme: light) {
     .inscrollmenu p {
@@ -386,34 +433,6 @@ h3 {
         background-color: var(--md-sys-color-on-tertiary-container);
         color: var(--md-sys-color-tertiary-container);
         transition: 0.5s;
-    }
-
-    input[type="number"] {
-        -webkit-appearance: textfield;
-        -moz-appearance: textfield;
-        appearance: textfield;
-      }
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none;
-    }
-
-    .number-input {
-        background-color: var(--md-sys-color-surface);
-        border-color: var(--md-sys-color-outline);
-        border-radius: 10px;
-        padding: 10px;
-        border-width: 0px;
-        color: var(--md-sys-color-on-surface);
-    }
-
-    .number-input-b {
-        background-color: var(--md-sys-color-surface);
-        border-color: var(--md-sys-color-outline);
-        padding: 5px;
-        border-width: 0px;
-        color: var(--md-sys-color-on-surface);
-        width: 50px;
     }
 
     .nav-btn-left{
@@ -783,34 +802,6 @@ h3 {
         background-color: var(--md-sys-color-on-tertiary-container);
         color: var(--md-sys-color-tertiary-container);
         transition: 0.5s;
-    }
-
-    input[type="number"] {
-        -webkit-appearance: textfield;
-        -moz-appearance: textfield;
-        appearance: textfield;
-      }
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none;
-    }
-
-    .number-input {
-        background-color: var(--md-sys-color-surface);
-        border-color: var(--md-sys-color-outline);
-        border-radius: 10px;
-        padding: 10px;
-        border-width: 0px;
-        color: var(--md-sys-color-on-surface);
-    }
-
-    .number-input-b {
-        background-color: var(--md-sys-color-surface);
-        border-color: var(--md-sys-color-outline);
-        padding: 5px;
-        border-width: 0px;
-        color: var(--md-sys-color-on-surface);
-        width: 50px;
     }
 
     .nav-btn-left{

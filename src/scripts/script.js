@@ -142,12 +142,13 @@ let questions = [
         category: "📨 Messagerie",
         question: "En moyenne, combien d'e-mails envoyez-vous par semaine ?",
         advice: "Quand j'envoie des e-mails, des pièces jointes...<br> Si j'envoie un mail à 10 personnes, cela compte pour 10 e-mails.",
-        resultsAdvices: "Pour réduire l'impact de mes e-mails: <br> - zipper les pièces jointes <br> - limiter au maximum le nombre de destinataires et de pièces jointes <br> - Au lieu d'envoyer un mail à la personne à coté de moi, je privilégie les transferts USB <br> - supprimer régulièrement les e-mails inutiles (spam, newsletters...)",
+        resultsAdvices: "Pour réduire l'impact de mes e-mails: <br> - zipper les pièces jointes (les regrouper dans un seul fichier)<br> - limiter au maximum le nombre de destinataires et de pièces jointes <br> - Au lieu d'envoyer un mail à la personne à coté de moi, je privilégie les transferts USB <br> - supprimer régulièrement les e-mails inutiles (spam, newsletters...)",
         exactVal: false,
         options: null,
         answerType: "number",
         grandeur: "",
-        unité: "e-mails ",
+        unité: null,
+        unitéConvert: null,
         getAnswer: true,
         answer: null,
         userAnswer: 0,
@@ -162,13 +163,14 @@ let questions = [
         minimum: "0",
         category: "📼 Streaming vidéo",
         question: "En moyenne, combien d'heures par semaine passez-vous à regarder des vidéos en streaming ?",
-        advice: "Quand je regarde des films sur Netflix, Amazon Prime ou alors des vidéos sur Youtube, TikTok, Instagram, etc...<br>Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !",
+        advice: `Quand je regarde des films sur Netflix, Amazon Prime ou alors des vidéos sur Youtube, TikTok, Instagram, etc...<br>Si vous ne pouvez pas répondre, faites une estimation, l'essentiel c'est d'apprendre !<br>➡️ Sachez que ces informations peuvent se trouver dans les statistiques d'utilisation de votre appareil.`,
         resultsAdvices : "Pour regarder des émissions en direct, il est préférable de privilégier la TNT à l'ADSL (votre box internet). En effet, regarder une émission en streaming HD via sa box ADSL émet autant de gaz à effet de serre que de fabriquer, transporter et lire un DVD ! <br> Un autre bon geste serait d'essayer d'activer dès que possible le mode économie d'énergie sur vos appareils.",
         exactVal: false,
         options: null,
         answerType: "number",
         grandeur: "heures",
-        unité: "heures",
+        unité: null,
+        unitéConvert: null,
         getAnswer: true,
         answer: null,
         userAnswer: 0,
@@ -183,13 +185,14 @@ let questions = [
         minimum: "0",
         category: "🛜 Transfert de données",
         question: "En moyenne, combien de Go de données transférez-vous par semaine ?",
-        advice: "Quand je télécharge des fichiers, des photos, des vidéos, des musiques, Ou alors quand j'envoie des fichiers, des vidéos...<br>Une image fait en moyenne ",
+        advice: `Quand je télécharge des fichiers, des photos, des vidéos, des musiques mais également quand j'envoie des fichiers, des vidéos...<br>➡️ Une image fait en moyenne 2,4Mo.<br>➡️ 1 minute de vidéo en HD fait 5Mo.<br>➡️ Un fichier PDF fait en moyenne 1Mo.`,
         resultsAdvices: "Afin de limiter leurs impact : <br>- Essayer de compresser les fichiers avant de les envoyer, cela réduit la taille des fichiers et donc la consommation d'énergie.",
         exactVal: false,
         options: null,
         answerType: "number",
         grandeur: "Go",
-        unité: "Go",
+        unité: ["Go", "Mo", "Ko"],
+        unitéConvert: [1, 1000, 1000000],
         getAnswer: true,
         answer: null,
         userAnswer: 0,
@@ -204,13 +207,14 @@ let questions = [
         minimum: "0",
         category: "☁️ Stockage de données dans le cloud",
         question: "Quelle quantité de données stockez-vous dans le cloud (via iCloud, Google Drive, OneDrive, etc.) ?",
-        advice: "Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive...",
+        advice: `Quand je stocke des fichiers, des photos, des vidéos sur iCloud, Google Drive, OneDrive... <br>➡️ Ces informations sont accessibles sur les applications de stockage de données`,
         resultsAdvices:"- Avant de stocker des données dans le cloud, il est préférable de les compresser pour réduire la taille des fichiers et donc la consommation d'énergie.<br>- Il est également important de choisir des hébergeur avec une politique environnementale claire, comme des centres de données alimentés par des énergies renouvelables",
         exactVal: false,
         options: null,
         answerType: "number",
         grandeur: "Go",
-        unité: "Go de données stockées",
+        unité: ["Go", "Mo", "Ko"],
+        unitéConvert: [1, 1000, 1000000],
         getAnswer: true,
         answer: null,
         userAnswer: null,
@@ -259,13 +263,14 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "heures",
-        unité: "heure[plural] de visioconférence[plural]",
+        unité: null,
+        unitéConvert: null,
         getAnswer: true,
         answer: null,
         userAnswer: 0,
         formule: 0.1*52, //A modifier
         approx: 0.8064516129,
-        placeholder: "Entrez une valeur",
+        placeholder: "Entrez une valeur en ",
         prevQuestion : ["4-1"],
         subQuestion: ["5"]  
     },
@@ -280,13 +285,14 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "",
-        unité: "heure[plural] de visioconférence[plural]",
+        unité: null,
+        unitéConvert: null,
         getAnswer: true,
         answer: null,
         userAnswer: 0,
         formule: 0.1*52, //A modifier
         approx: 0.8064516129,
-        placeholder: "Entrez une valeur",
+        placeholder: "Entrez une valeur ",
         prevQuestion : ["4-1"],
         subQuestion: ["5"]
     },
@@ -301,7 +307,8 @@ let questions = [
         options: null,
         answerType: "number",
         grandeur: "",
-        unité: "requêtes ",
+        unité: null,
+        unitéConvert: null,
         getAnswer: true,
         answer: null,
         userAnswer: 0,
@@ -445,11 +452,16 @@ function displayQuestion(question) {
                 //console.log("valeur approximative");
             }
         });
+
         let label = document.createElement('label')
         label.innerHTML = "Cocher la case si la valeur entrée est exacte et non approximative";
         label.htmlFor = "exactVal" + question.id;
         checkboxDiv.appendChild(checkbox);
         checkboxDiv.appendChild(label);
+
+        let inputDiv = document.createElement('div');
+        inputDiv.className = 'input-container-row';
+        questionArea.appendChild(inputDiv);
 
         //Création de la zone d'input pour la réponse
         let input = document.createElement('input')
@@ -458,8 +470,29 @@ function displayQuestion(question) {
         input.placeholder = question.placeholder + question.grandeur;
         input.id = "answer" + question.id;
         input.className = 'number-input';
-        questionArea.appendChild(input);
+        inputDiv.appendChild(input);
         questionGlobal.style.display = 'none';
+
+        if(question.unité != null) {
+            //un mini menu pour sélectioner la grandeur de la réponse
+            let select = document.createElement('select');
+            select.id = "unit" + question.id;
+            select.className = 'unit-select';
+            inputDiv.appendChild(select);
+
+            //on ajoute des options pour les unités
+            for (let i = 0; i < question.unité.length; i++) {
+                let option = document.createElement('option');
+                option.value = question.unité[i];
+                option.text = question.unité[i];
+                select.appendChild(option);
+            }
+
+            select.addEventListener("change", function() {
+                input.placeholder = question.placeholder + select.value;
+                console.log(select.value);
+            });
+        }
 
         displayButtons(questionGlobal, question);
         
@@ -723,6 +756,15 @@ function fetchAnswers(questionId) {
     if(question.getAnswer && question.answerType == 'number') {
         userAnswer = document.getElementById("answer" + questionId).value;
         if(!isNaN(userAnswer) && userAnswer >= question.minimum) {
+            //en fonction de la grandeur de la réponse, on la multiplie par le facteur associé à cette grandeur
+            if(question.unité != null) {
+                let unit = document.getElementById("unit" + questionId).value;
+                let index = question.unité.indexOf(unit);
+                userAnswer = userAnswer / question.unitéConvert[index];
+                console.log("unité : " + unit);
+                console.log("index : " + index);
+                console.log("valeur en Go : " + userAnswer);
+            }
             question.userAnswer = question.userAnswer * userAnswer;
             if(question.exactVal == false) {    //Si l'utilisateur entre une valeur approximative, on applique la formule d'approximation
                 correctedAnswer = (userAnswer*question.approx).toFixed(2)
@@ -817,7 +859,7 @@ function displayResults() {
     if(total1 != 0 && total2 != 0) {
         //Affichage du chiffre total des émissions de CO2 sur 1 an
         let totalText = document.createElement('p');
-        totalText.innerHTML = `estimation de votre total d'émissions sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
+        totalText.innerHTML = `Estimation de votre total d'émissions sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
         totalText.className = 'major-text';
         resultsArea.appendChild(totalText);
 
@@ -839,7 +881,7 @@ function displayResults() {
 
         //Affichage du chiffre total des émissions de CO2 sur 1 an
         let totalText2 = document.createElement('p');
-        totalText2.innerHTML = `estimation du total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
+        totalText2.innerHTML = `Estimation du total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
         totalText2.className = 'major-text';
         resultsArea.appendChild(totalText2);
 
@@ -859,7 +901,7 @@ function displayResults() {
     } else if(total1 != 0 && total2 == 0) {
         //Affichage du chiffre total des émissions de CO2 sur 1 an
         let totalText = document.createElement('p');
-        totalText.innerHTML = `Total d'émission sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
+        totalText.innerHTML = `Estimation de votre total d'émissions sur 1 an : ${total1.toLocaleString()} Kg de CO2`;
         totalText.className = 'major-text';
         resultsArea.appendChild(totalText);
 
@@ -879,7 +921,7 @@ function displayResults() {
     } else if(total2 != 0 && total1 == 0){
         //Affichage du chiffre total des émissions de CO2 sur 1 an
         let totalText2 = document.createElement('p');
-        totalText2.innerHTML = `Total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
+        totalText2.innerHTML = `Estimation du total d'émission de vos appareils: ${total2.toLocaleString()} Kg de CO2`;
         totalText2.className = 'major-text';
         resultsArea.appendChild(totalText2);
 
@@ -1185,68 +1227,4 @@ function copyLink(){
     var copyText = window.location.href;
     navigator.clipboard.writeText(copyText);
     alert("Lien copié dans le presse-papier !")
-}
-
-
-/*<nav class="navBar">
-<div class="container">
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>sport</p>
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-    <div class="inscrollmenu">
-        <p>Badminton</p>
-        <button>découvrir</button>
-    </div>
-</div>
-</nav>*/
-
-function verifValue(value) {
-    //on vérifie que la valeur est un nombre
-    if(isNaN(value)) {
-        return false;
-    } else {
-        return true;
-    }
 }
