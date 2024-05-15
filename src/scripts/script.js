@@ -339,7 +339,7 @@ let questions = [
         minimum: "0",
         category: "💻 Recherches sur le web",
         question: "En moyenne, combien de recherches sur le web faites-vous <U>par jour<U> ?",
-        advice: "Quand je fais des recherches sur Google, Bing, Qwant...<br>Vous pouvez retrouver le nombre de recherches que vous avez effectuées sur votre navigateur en consultant votre historique de recherche.",
+        advice: "Quand je fais des recherches sur Google, Bing, Qwant...<br>➡️ Vous pouvez retrouver le nombre de recherches que vous avez effectuées sur votre navigateur en consultant votre historique de recherche.",
         resultsAdvices: "- Il faudrait privilégier des moteurs de recherche écologiques comme certains qui plantent des arbres pour chaque recherche effectuée.<br>- Enregistrez en favoris les sites recherchés régulièrement plutôt que de laisser de nombreux onglets ouverts en permanence.<br>- On peut également rechercher mieux en utilisant des mots-clés précis, en utilisants les raccourcis des différents navigateurs tels que la recherche avancée.",
         exactVal: false,
         options: null,
@@ -1138,7 +1138,8 @@ function displayStats(resultsGlobal, total1, total2) {
     let shareText = document.createElement('p');
     shareText.innerHTML = "Partagez le questionnaire avec vos amis !";
     shareText.className = 'reference-title';
-    shareText.style.padding = '10px 20px';
+    shareText.style.padding = '20px 20px 0px 20px';
+    shareText.style.fontSize = 'calc(1.5em + 1vw)';
     document.getElementById("shareDiv").appendChild(shareText);
 
     //creation d'une div qui contiendra les boutons de partage
@@ -1146,11 +1147,11 @@ function displayStats(resultsGlobal, total1, total2) {
     shareDiv.style.display = 'flex';
     shareDiv.style.justifyContent = 'center';
     shareDiv.style.margin = '20px';
-    shareDiv.style.padding = '10px';
+    shareDiv.style.padding = '20px';
     shareDiv.style.flexDirection = 'column';
     shareDiv.style.gap = '10px';
     shareDiv.style.backgroundColor = "var(--md-sys-color-on-tertiary-container)";
-    shareDiv.style.borderRadius = '15px';
+    shareDiv.style.borderRadius = '25px';
     document.getElementById("shareDiv").appendChild(shareDiv);
     displayShareBtn(shareDiv);
 }
