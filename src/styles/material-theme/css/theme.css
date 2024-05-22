@@ -4,6 +4,14 @@
 @import url(theme.light.css) (prefers-color-scheme: light);
 @import url(theme.dark.css) (prefers-color-scheme: dark);
 
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 header button {
     margin: 5px 0px 0px 10px;
     padding: 5px 10px 5px 10px;
@@ -350,14 +358,6 @@ h3 {
         object-fit: contain;
     }
 
-    header {
-        width: 100%;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        align-content: center;
-    }
-
     footer {
         width: 100%;
         display: flex;
@@ -685,14 +685,6 @@ h3 {
         background-color: var(--md-sys-color-secondary);
         transition: 0.25s;
         object-fit: contain;
-    }
-
-    header {
-        width: 100%;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        align-content: center;
     }
 
     body {
