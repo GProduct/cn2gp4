@@ -1212,12 +1212,12 @@ function displayProgressBar(statsArea, percent) {
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     const bottomLogo = document.getElementById('bottomLogo');
     let btn = document.getElementById('toggleThemeBtn');
-    btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
+    btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span> Theme`;
     bottomLogo.src = `src/styles/icon/logo_cours_transversal_blanc_rvb.png`;
 } else {
     const bottomLogo = document.getElementById('bottomLogo');
     let btn = document.getElementById('toggleThemeBtn');
-    btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span>`;
+    btn.innerHTML = `<span class="material-symbols-outlined">format_paint</span> Theme`;
     bottomLogo.src = `src/styles/icon/logo_cours_transversal_blanc_rvb.png`;
 }
 
@@ -1280,6 +1280,15 @@ document.getElementById('getImgReferenceBtn').addEventListener('click', function
     var r = confirm("Une nouvelle page va s'ouvrir pour vous rediriger vers la source de l'image. Voulez-vous continuer ?");
     if (r == true) {
         window.open(bgImgUrl[randomIndex].source);
+    } else {
+        return;
+    }
+});
+
+githubBtn.addEventListener('click', function() {
+    var r = confirm("Une nouvelle page va s'ouvrir pour vous rediriger vers le dépôt GitHub. Voulez-vous continuer ?");
+    if (r == true) {
+        window.open("https://github.com/GProduct/cn2gp4.git");
     } else {
         return;
     }

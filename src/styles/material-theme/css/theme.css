@@ -4,6 +4,18 @@
 @import url(theme.light.css) (prefers-color-scheme: light);
 @import url(theme.dark.css) (prefers-color-scheme: dark);
 
+header button {
+    margin: 5px 0px 0px 10px;
+    padding: 5px 10px 5px 10px;
+    font-weight: bolder;
+    display: flex;
+    gap: 5px;
+}
+
+.bi-github::before {
+    font-size: x-large;
+}
+
 .share-btn {
     display: flex;
     flex-direction: row;
@@ -346,12 +358,6 @@ h3 {
         align-content: center;
     }
 
-    header button{
-        margin: 5px 0px 0px 10px;
-        padding: 5px 10px 5px 10px;
-        font-weight: bolder;
-    }
-
     footer {
         width: 100%;
         display: flex;
@@ -687,12 +693,6 @@ h3 {
         justify-content: left;
         align-items: center;
         align-content: center;
-    }
-
-    header button{
-        margin: 5px 0px 0px 10px;
-        padding: 5px 10px 5px 10px;
-        font-weight: bolder;
     }
 
     body {
