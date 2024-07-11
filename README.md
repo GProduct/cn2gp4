@@ -1,4 +1,4 @@
-#🍃 EcoQuiz
+# EcoQuiz 🍃
 
 ## Promotion du numérique responsable à l'université
 
@@ -6,7 +6,7 @@ Un questionnaire destiné à faire prendre conscience au consommateur du numéri
 
 Il va de pair avec un flyer disponible sur la page officielle du projet (https://www.unige.ch/digital-clinics/projets-des-etudiants-digital-clinics/2024/jumeaux-numeriques-et-biens-culturels-4#panel-1537)
 
-##⚡ en bref
+# En bref⚡
 - 8 question.
 - 3 échelles de comparaison.
 - Des astuces pour mieux consommer.
