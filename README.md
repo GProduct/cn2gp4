@@ -18,4 +18,6 @@ Il y a deux liens:
 - http://tecfaetu.unige.ch/etu-maltt/concordia/caibei3/cn2gp4-main/index.html
 - https://gproduct.github.io/cn2gp4 (version la plus récente)
 ## Contributions
+Plus d'informations sur https://www.unige.ch/digital-clinics/projets-des-etudiants-digital-clinics/2024/jumeaux-numeriques-et-biens-culturels-4#panel-1537
+
 N'hésitez pas à signaler tout bug/erreur/problème en tout genre !
